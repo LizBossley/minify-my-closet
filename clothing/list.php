@@ -26,7 +26,7 @@
 		                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
 		            }
 		        };
-		        xmlhttp.open("GET","getfaction.php?q="+str,true);
+		        xmlhttp.open("GET","getclothing.php?q="+str,true);
 		        xmlhttp.send();
 		    }
 		}
@@ -39,7 +39,7 @@
 				<p> Welcome to this clothing-list page </p>
 			</div>
 			<form>
-				<select name="faction" onchange="showFaction(this.value)">
+				<select name="category" onchange="showCategory(this.value)">
 						<option value="">Select a faction:</option>
 					<optgroup label="Warmachine">
 						<option value="1">Convergence</option>
@@ -60,7 +60,7 @@
 				</select>
 			</form>
 			<br>
-			<div id="txtHint"><b>Cards will be displayed here once faction is selected</b></div>
+			<div id="txtHint"><b>Clothing will be displayed here once category selected</b></div>
 		</div>
 	</body>
 </html>

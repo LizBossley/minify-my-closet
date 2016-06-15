@@ -5,16 +5,13 @@ $(document).ready(function() {
 function submitForm() {
     console.log("i'm being called (submit form)");
     var name = $("#name").val();
-    var faction = $("#faction").val();
-    var game = 0; //default warmachine
-    if (faction > 7) {
-        game = 1; //else set to hordes
-    }
-    var size = $('[name=size]:checked').val();
+    var category = $("#category").val();
+
+    // var size = $('[name=size]:checked').val();
 
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'name=' + name + '&faction=' + faction + '&game=' + game + '&size=' + size;
-    if (name == '' || faction == '') {
+    var dataString = 'name=' + name + '&category=' + category;
+    if (name == '' || category == '') {
         alert("Please Fill All Fields");
     } else {
         // AJAX Code To Submit Form.
@@ -33,12 +30,12 @@ function submitForm() {
 
 function validateForm() {
     console.log("vally in the house");
-    $("#card-edit").validate({
+    $("#clothing-edit").validate({
             rules: {
                 name: {
                     required: true
                 },
-                faction: {
+                category: {
                     required: true,
                 }
             },
@@ -46,8 +43,8 @@ function validateForm() {
                 name: {
                     required: "Please enter your name",
                 },
-                faction: {
-                    required: "Please select a faction.",
+                category: {
+                    required: "Please select a category.",
                 }
             },
             submitHandler: function(form) {

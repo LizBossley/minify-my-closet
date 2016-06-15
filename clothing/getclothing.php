@@ -25,8 +25,8 @@ if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
 }
 
-$db = mysqli_select_db($con, "damage_counter"); // Selecting Database
-$sql="SELECT * FROM card_list WHERE faction = '".$q."'";
+$db = mysqli_select_db($con, "minify_my_closet"); // Selecting Database
+$sql="SELECT * FROM clothing WHERE category = '".$q."'";
 $result = mysqli_query($con,$sql);
 
 echo "<table>
