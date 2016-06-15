@@ -9,7 +9,7 @@
 		<?php include '../resources/imports/resources.php'; ?>
 		
 		<script>
-		function showFaction(str) {
+		function showCategory(str) {
 		    if (str == "") {
 		        document.getElementById("txtHint").innerHTML = "";
 		        return;
@@ -40,23 +40,15 @@
 			</div>
 			<form>
 				<select name="category" onchange="showCategory(this.value)">
-						<option value="">Select a faction:</option>
-					<optgroup label="Warmachine">
-						<option value="1">Convergence</option>
-						<option value="2">Cryx</option>
-						<option value="3">Cygnar</option>
-						<option value="4">Khador</option>
-						<option value="5">Protectorate</option>
-						<option value="6">Retribution</option>
-						<option value="7">Mercenaries</option>
-					</optgroup>
-					<optgroup label="Hordes">
-						<option value="8">Circle</option>
-						<option value="9">Legion</option>
-						<option value="10">Skorne</option>
-						<option value="11">Trollbloods</option>
-						<option value="12">Minions</option>
-					</optgroup>
+					<option value="">Select a category:</option>
+					<option value="1">Shirt</option>
+					<option value="2">Skirt</option>
+					<option value="3">Dress</option>
+					<option value="4">Sweater</option>
+					<option value="5">Pants</option>
+					<option value="6">Shorts</option>
+					<option value="7">Outerwear</option>
+					<option value="8">Other</option>
 				</select>
 			</form>
 			<br>

@@ -20,10 +20,9 @@
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" href="#basic-information">Basic Information</a>
+									Clothing Information
 								</h4>
 							</div>
-							<div id="basic-information" class="panel-collapse collapse">
 								<div class="panel-body">
 									<div class="form-group">
 										<label for="name">Name :</label>
@@ -39,51 +38,16 @@
 										<option value="5">Pants</option>
 										<option value="6">Shorts</option>
 										<option value="7">Outerwear</option>
+										<option value="8">Other</option>
 									</select>
 									<br>
-									<label for="size">Base size:</label>
-									<input class="radio-inline" type="radio" name="size" value="1" checked> S
-									<input class="radio-inline" type="radio" name="size" value="2"> M
-									<input class="radio-inline" type="radio" name="size" value="3"> L
-								</div>
-							</div>
-						</div>
-						<div class="panel  panel-primary">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" href="#model-statistics">Model Statistics </a>
-								</h4>
-							</div>
-							<div id="model-statistics" class="panel-collapse collapse">
-								<div class="panel-body">
 									<div class="row">
 										<div class="col-sm-6">
-											<label>SPD :</label>
-											<input class="form-control" id="spd" name="spd" type="text">
-											<label>STR :</label>
-											<input class="form-control" id="str" name="str" type="text">
-											<label>MAT :</label>
-											<input class="form-control" id="mat" name="mat" type="text">
-											<label>RAT :</label>
-											<input class="form-control" id="rat" name="rat" type="text">
-											<label>DEF :</label>
-											<input class="form-control" id="def" name="def" type="text">
+											<label>Price :</label>
+											<input class="form-control" id="price" name="price" type="text">
 										</div>
-										<div class="col-sm-6">
-											<label>ARM :</label>
-											<input class="form-control" id="arm" name="arm" type="text">
-											<label>CMD :</label>
-											<input class="form-control" id="cmd" name="cmd" type="text">
-											<div class="hordes">	
-												<label>FURY :</label>
-												<input class="form-control" id="fury" name="fury" type="text">
-												<label>THR :</label>
-												<input class="form-control" id="thr" name="thr" type="text">
-											</div>
-											<div class="warmachine">
-												<label>FOCUS :</label>
-												<input class="form-control" id="focus" name="focus" type="text">
-											</div>
+										<div class="checkbox">
+										  <label><input type="checkbox" id="athletic" name="athletic" value="0">Athletic</label>
 										</div>
 									</div>
 								</div>
@@ -93,19 +57,5 @@
 				</form>
 			</div>
 		</div>
-		
-<script>
-$("#faction").change(function() {
-var faction = $("#faction").val();
-    if (faction > 7) {
-        $('.warmachine').hide();
-        $('.hordes').show();
-    } else {
-    	$('.hordes').hide();
-        $('.warmachine').show();
-    }
-});
-</script>
-
 	</body>
 </html>

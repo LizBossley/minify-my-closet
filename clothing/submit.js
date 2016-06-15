@@ -6,11 +6,14 @@ function submitForm() {
     console.log("i'm being called (submit form)");
     var name = $("#name").val();
     var category = $("#category").val();
+    var price = $("#price").val();
+    console.log(price);
+    var athletic = $('[name=athletic]:checked').val();
 
     // var size = $('[name=size]:checked').val();
 
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'name=' + name + '&category=' + category;
+    var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&athletic=' + athletic;
     if (name == '' || category == '') {
         alert("Please Fill All Fields");
     } else {
