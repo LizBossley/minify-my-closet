@@ -9,11 +9,15 @@ function submitForm() {
     var price = $("#price").val();
     console.log(price);
     var athletic = $('[name=athletic]:checked').val();
+    var season = $("#season").val();
+    var state = $("#state").val();
+    var store = $("#store").val()
 
     // var size = $('[name=size]:checked').val();
 
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&athletic=' + athletic;
+    var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&athletic=' 
+        + athletic + '&season=' + season + '&state=' + state + '&store=' + store;
     if (name == '' || category == '') {
         alert("Please Fill All Fields");
     } else {
