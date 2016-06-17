@@ -15,6 +15,8 @@
 				<p> Welcome to this home page </p>
 				<p> Would you like to <a href="clothing/list.php">view</a> the clothing items?</p>
 				<p> Would you like to <a href="clothing/edit.php">add</a> a clothing item?</p>
+				<p> Would you like to <a href="outfits/list.php">view</a> the outfits?</p>
+				<p> Would you like to <a href="outfits/edit.php">add</a> an outfit?</p>
 			</div>
 		</div>
 	</body>

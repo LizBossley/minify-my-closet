@@ -5,17 +5,12 @@ $(document).ready(function() {
 function submitForm() {
     var name = $("#name").val();
     var category = $("#category").val();
-    var price = $("#price").val();
-    var athletic = $('[name=athletic]:checked').val();
     var season = $("#season").val();
-    var state = $("#state").val();
-    var store = $("#store").val()
 
     // var size = $('[name=size]:checked').val();
 
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&athletic=' 
-        + athletic + '&season=' + season + '&state=' + state + '&store=' + store;
+    var dataString = 'name=' + name + '&category=' + category + '&season=' + season;
     if (name == '' || category == '') {
         alert("Please Fill All Fields");
     } else {
@@ -34,22 +29,16 @@ function submitForm() {
 }
 
 function validateForm() {
-    $("#clothing-edit").validate({
+    $("#outfit-edit").validate({
             rules: {
                 name: {
                     required: true
                 },
-                category: {
-                    required: true,
-                }
             },
             messages: {
                 name: {
                     required: "Please enter your name",
                 },
-                category: {
-                    required: "Please select a category.",
-                }
             },
             submitHandler: function(form) {
                 submitForm();
