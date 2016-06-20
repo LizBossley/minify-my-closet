@@ -9,7 +9,7 @@
 		<?php include '../resources/imports/resources.php'; ?>
 		
 		<script>
-		function showCategory(str) {
+		function showCategory(str, column) {
 		    if (str == "") {
 		        document.getElementById("txtHint").innerHTML = "";
 		        return;
@@ -26,9 +26,13 @@
 		                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
 		            }
 		        };
-		        xmlhttp.open("GET","getclothing.php?q="+str,true);
+		        xmlhttp.open("GET","getclothing.php?q="+str+"&column="+column,true);
 		        xmlhttp.send();
 		    }
+		}
+
+		function switchViewBy(filter) {
+			
 		}
 		</script>
 	</head>
@@ -38,19 +42,38 @@
 			<div class="jumbotron">
 				<p> Welcome to this clothing-list page </p>
 			</div>
-			<form>
-				<select name="category" onchange="showCategory(this.value)">
-					<option value="">Select a category:</option>
-					<option value="1">Shirt</option>
-					<option value="2">Skirt</option>
-					<option value="3">Dress</option>
-					<option value="4">Sweater</option>
-					<option value="5">Pants</option>
-					<option value="6">Shorts</option>
-					<option value="7">Outerwear</option>
-					<option value="8">Other</option>
-				</select>
-			</form>
+			<div class="row">
+			<div class="col-sm-12">
+				<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('category');" value="category">Category</label>
+				<label class="radio-inline"><input type="radio" name="viewBy" value="season">Season</label>
+				<label class="radio-inline"><input type="radio" name="viewBy" value="test">Other choice</label>
+			</div>
+				<form>
+					<div class="col-sm-6">
+						<select class="form-control" name="category" onchange="showCategory(this.value, 'category')">
+							<option value="">Select a category:</option>
+							<option value="1">Shirt</option>
+							<option value="2">Skirt</option>
+							<option value="3">Dress</option>
+							<option value="4">Sweater</option>
+							<option value="5">Pants</option>
+							<option value="6">Shorts</option>
+							<option value="7">Outerwear</option>
+							<option value="8">Other</option>
+						</select>
+					</div>
+					<div class="col-sm-6">
+						<select class="form-control" id="season" name="season" onchange="showCategory(this.value, 'season')">
+							<option value="">Select a season:</option>
+							<option value="1">Summer</option>
+							<option value="2">Spring</option>
+							<option value="3">Winter</option>
+							<option value="4">Fall</option>
+							<option value="5">Year-round</option>
+						</select>
+					</div>
+				</form>
+			</div>
 			<br>
 			<div id="txtHint"><b>Clothing will be displayed here once category selected</b></div>
 		</div>
