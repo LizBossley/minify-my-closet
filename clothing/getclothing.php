@@ -33,12 +33,12 @@ $result = mysqli_query($con,$sql);
 echo "<table>
 <tr>
 <th>Name</th>
-<th>View/Edit</th>
+<th class='table-clothing-edit'>View/Edit</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['name'] . "</td>";
-    echo "<td><a href='/edit?id=" . $row['id'] . "'>Edit</a> | <a href='/edit?id=" . $row['id'] . "'>View</a></td>"; 
+    echo "<td><a href='/edit?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
+    echo "<td class='table-clothing-edit'><a href='/edit?id=" . $row['id'] . "'>Edit</a>"; 
     echo "</tr>";
 }
 echo "</table>";

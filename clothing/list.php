@@ -32,9 +32,16 @@
 		}
 
 		function switchViewBy(filter) {
-			
+			$('.filter').hide();
+
+			$('.' + filter).show();
 		}
+
+		$(document).ready(function() {
+			switchViewBy('category');
+		});
 		</script>
+
 	</head>
 	<body>
 		<?php include '../resources/imports/header.php'; ?>
@@ -43,13 +50,18 @@
 				<p> Welcome to this clothing-list page </p>
 			</div>
 			<div class="row">
-			<div class="col-sm-12">
-				<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('category');" value="category">Category</label>
-				<label class="radio-inline"><input type="radio" name="viewBy" value="season">Season</label>
-				<label class="radio-inline"><input type="radio" name="viewBy" value="test">Other choice</label>
+				<div class="col-sm-3">
+					<p>View by:</p>
+				</div>
+				<div class="col-sm-9">
+					<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('category');" value="category" checked="checked">Category</label>
+					<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('season');" value="season">Season</label>
+					<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('state');" value="state">Condition</label>
+				</div>
 			</div>
+			<div class="row">
 				<form>
-					<div class="col-sm-6">
+					<div class="col-sm-12 category filter">
 						<select class="form-control" name="category" onchange="showCategory(this.value, 'category')">
 							<option value="">Select a category:</option>
 							<option value="1">Shirt</option>
@@ -62,7 +74,7 @@
 							<option value="8">Other</option>
 						</select>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-12 season filter">
 						<select class="form-control" id="season" name="season" onchange="showCategory(this.value, 'season')">
 							<option value="">Select a season:</option>
 							<option value="1">Summer</option>
@@ -70,6 +82,17 @@
 							<option value="3">Winter</option>
 							<option value="4">Fall</option>
 							<option value="5">Year-round</option>
+						</select>
+					</div>
+					<div class="col-sm-12 state filter">
+						<label for="season">Condition :</label>
+						<select class="form-control" id="state" name="state" onchange="showCategory(this.value, 'state')">
+							<option value="">Select a condition:</option>
+							<option value="1">New</option>
+							<option value="2">Like New</option>
+							<option value="3">Broken in</option>
+							<option value="4">Loved</option>
+							<option value="5">Replce Soon</option>
 						</select>
 					</div>
 				</form>
