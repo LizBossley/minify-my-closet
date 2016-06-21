@@ -6,7 +6,7 @@ function submitForm() {
     var name = $("#name").val();
     var category = $("#category").val();
     var price = $("#price").val();
-    var athletic = $('[name=athletic]:checked').val();
+    var type = $('#type').val();
     var season = $("#season").val();
     var state = $("#state").val();
     var store = $("#store").val()
@@ -14,8 +14,8 @@ function submitForm() {
     // var size = $('[name=size]:checked').val();
 
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&athletic=' 
-        + athletic + '&season=' + season + '&state=' + state + '&store=' + store;
+    var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&type=' 
+        + type + '&season=' + season + '&state=' + state + '&store=' + store;
     if (name == '' || category == '') {
         alert("Please Fill All Fields");
     } else {

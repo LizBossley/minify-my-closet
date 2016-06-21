@@ -12,6 +12,7 @@
 	</head>
 	<body>
 		<?php include '../resources/imports/header.php'; ?>
+
 		<div class="container">
 			<div class="row">
 				<p> Welcome to this clothing-edit page </p>
@@ -40,7 +41,7 @@
 												<option value="5">Pants</option>
 												<option value="6">Shorts</option>
 												<option value="7">Outerwear</option>
-												<option value="8">Other</option>
+												<option value="8">Other/Multi</option>
 											</select>
 										</div>
 										<div class="col-sm-4">
@@ -62,23 +63,27 @@
 												<option value="2">Like New</option>
 												<option value="3">Broken in</option>
 												<option value="4">Loved</option>
-												<option value="5">Replce Soon</option>
+												<option value="5">Replace Soon</option>
 											</select>
 										</div>
 									</div>
 									<div class="row">
-										<div class="col-sm-3">
+										<div class="col-sm-4">
 											<label>Price :</label>
 											<input class="form-control" id="price" name="price" type="text">
 										</div>
-										<div class="col-sm-6">
+										<div class="col-sm-4">
 											<label for="name">Purchased from :</label>
 											<input class="form-control" id="store" name="store" type="text">
 										</div>
-										<div class="col-sm-3">
-											<div class="checkbox">
-											  <label><input type="checkbox" id="athletic" name="athletic" value="1">Athletic</label>
-											</div>
+										<div class="col-sm-4">
+											<label for="type">Use :</label>
+											<select class="form-control" id="type" name="type">
+												<option value="">Select a category:</option>
+												<option value="1">Casual</option>
+												<option value="2">Athletic</option>
+												<option value="3">Dressy</option>
+											</select>
 										</div>
 									</div>
 								</div>

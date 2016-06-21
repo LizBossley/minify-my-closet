@@ -85,14 +85,13 @@
 						</select>
 					</div>
 					<div class="col-sm-12 state filter">
-						<label for="season">Condition :</label>
 						<select class="form-control" id="state" name="state" onchange="showCategory(this.value, 'state')">
 							<option value="">Select a condition:</option>
 							<option value="1">New</option>
 							<option value="2">Like New</option>
 							<option value="3">Broken in</option>
 							<option value="4">Loved</option>
-							<option value="5">Replce Soon</option>
+							<option value="5">Replace Soon</option>
 						</select>
 					</div>
 				</form>
