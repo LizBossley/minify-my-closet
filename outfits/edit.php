@@ -49,8 +49,7 @@
 												<option value="3">Dressy</option>
 											</select>
 										</div>
-
-									</div>
+										</div>		
 									</div>
 								</div>
 						</div>

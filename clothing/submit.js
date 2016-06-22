@@ -26,7 +26,7 @@ function submitForm() {
             data: dataString,
             cache: false,
             success: function(result) {
-                alert(result);
+                window.location.href="edit.php?id=" + result;
             }
         });
     }

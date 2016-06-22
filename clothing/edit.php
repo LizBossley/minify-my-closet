@@ -13,6 +13,15 @@
 	<body>
 		<?php include '../resources/imports/header.php'; ?>
 
+<?php 
+if (isset($_GET['id'])) {
+	echo "The id is set!";
+}
+?> 
+
+
+
+
 		<div class="container">
 			<div class="row">
 				<p> Welcome to this clothing-edit page </p>
@@ -86,6 +95,19 @@
 											</select>
 										</div>
 									</div>
+									<!-- <div class="row">
+										<div class="color-select">
+										  <input type="checkbox" name="color-select" id="color1" value="1">
+										  <label class="checkbox-inline" for="color1">Red</label>
+										
+										
+										  <input type="checkbox" name="color-select" id="color2" value="2">
+										  <label class="checkbox-inline" for="color1">Blue</label>
+										
+										  <input type="checkbox" name="color-select" id="color3" value="3">
+										  <label class="checkbox-inline" for="color1">Green</label>
+										</div>
+									</div> -->
 								</div>
 							</div>
 						</div>

@@ -17,8 +17,17 @@ $season=mysqli_real_escape_string($con, $_POST['season']);
 $state=mysqli_real_escape_string($con, $_POST['state']);
 $store=mysqli_real_escape_string($con, $_POST['store']);
 
+$query = "INSERT INTO clothing(name, category, price, type, season, state, store) VALUES ('$name', '$category', '$price', '$type', '$season', '$state', '$store')";
+
 //Insert query
-$query = mysqli_query($con, "INSERT INTO clothing(name, category, price, type, season, state, store) VALUES ('$name', '$category', '$price', '$type', '$season', '$state', '$store')");
-echo "Form Submitted Succesfully";
+if(!mysqli_query($con, $query)) {
+echo("Error description: " . mysqli_error($con));
+} else {
+$submittedId = mysqli_insert_id($con);
+}
+
+
+
+
 mysqli_close($con); // Connection Closed
 ?>
