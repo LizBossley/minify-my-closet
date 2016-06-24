@@ -95,7 +95,7 @@ if (isset($_GET['id'])) {
 											</select>
 										</div>
 									</div>
-									<!-- <div class="row">
+									<div class="row">
 										<div class="color-select">
 										  <input type="checkbox" name="color-select" id="color1" value="1">
 										  <label class="checkbox-inline" for="color1">Red</label>
@@ -107,7 +107,7 @@ if (isset($_GET['id'])) {
 										  <input type="checkbox" name="color-select" id="color3" value="3">
 										  <label class="checkbox-inline" for="color1">Green</label>
 										</div>
-									</div> -->
+									</div>
 								</div>
 							</div>
 						</div>

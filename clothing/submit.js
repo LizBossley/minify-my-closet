@@ -10,12 +10,13 @@ function submitForm() {
     var season = $("#season").val();
     var state = $("#state").val();
     var store = $("#store").val()
+    var colors = $("input[name=color-select]:checked").map( function () {return this.value;}).get().join(",");
 
     // var size = $('[name=size]:checked').val();
 
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&type=' 
-        + type + '&season=' + season + '&state=' + state + '&store=' + store;
+        + type + '&season=' + season + '&state=' + state + '&store=' + store + '&colors=' + colors;
     if (name == '' || category == '') {
         alert("Please Fill All Fields");
     } else {
@@ -26,7 +27,7 @@ function submitForm() {
             data: dataString,
             cache: false,
             success: function(result) {
-                window.location.href="edit.php?id=" + result;
+                window.location.href="edit.php?id=" + result + "&view=1";
             }
         });
     }

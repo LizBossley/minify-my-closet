@@ -16,6 +16,11 @@ $type=mysqli_real_escape_string($con, $_POST['type']);
 $season=mysqli_real_escape_string($con, $_POST['season']);
 $state=mysqli_real_escape_string($con, $_POST['state']);
 $store=mysqli_real_escape_string($con, $_POST['store']);
+$colors=mysqli_real_escape_string($con, $_POST['colors']);
+
+if (strlen($colors) > 1) {
+	$colorsInsert = explode(",", $colors);
+}
 
 $query = "INSERT INTO clothing(name, category, price, type, season, state, store) VALUES ('$name', '$category', '$price', '$type', '$season', '$state', '$store')";
 
@@ -23,11 +28,24 @@ $query = "INSERT INTO clothing(name, category, price, type, season, state, store
 if(!mysqli_query($con, $query)) {
 echo("Error description: " . mysqli_error($con));
 } else {
-$submittedId = mysqli_insert_id($con);
+	$submittedId = mysqli_insert_id($con);
+		
+	if(isset($submittedId)) {
+		if (isset($colorsInsert) && count($colorsInsert) > 1 ) {
+
+		} elseif (strlen($colors) == 1) {
+			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ('$submittedId', '$colors')";
+			if(!mysqli_query($con, $colorQuery)) {
+				echo("Error description: " . mysqli_error($con));
+			} else {
+
+			}
+
+		}
+	}
+
+	echo $submittedId;
 }
-
-
-
 
 mysqli_close($con); // Connection Closed
 ?>
