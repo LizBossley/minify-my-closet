@@ -28,19 +28,25 @@ $query = "INSERT INTO clothing(name, category, price, type, season, state, store
 if(!mysqli_query($con, $query)) {
 echo("Error description: " . mysqli_error($con));
 } else {
+	//get last id, process colors array and insert
 	$submittedId = mysqli_insert_id($con);
 		
 	if(isset($submittedId)) {
 		if (isset($colorsInsert) && count($colorsInsert) > 1 ) {
-
+			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ";
+			for($i = 0; $i < count($colorsInsert); $i++) {
+				$colorQuery .= "('$submittedId', '" . $colorsInsert[$i] . "'),";
+			}
+			$colorQuery = substr($colorQuery,0,-1);
+			$colorQuery .= ";";
+			if(!mysqli_query($con, $colorQuery)) {
+				echo("Error description: " . mysqli_error($con));
+			} 
 		} elseif (strlen($colors) == 1) {
 			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ('$submittedId', '$colors')";
 			if(!mysqli_query($con, $colorQuery)) {
 				echo("Error description: " . mysqli_error($con));
-			} else {
-
 			}
-
 		}
 	}
 

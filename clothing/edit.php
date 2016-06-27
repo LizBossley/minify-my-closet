@@ -17,6 +17,9 @@
 if (isset($_GET['id'])) {
 	echo "The id is set!";
 }
+if (isset($_GET['view'])) {
+	echo "The view is set!";
+}
 ?> 
 
 
