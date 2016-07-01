@@ -19,6 +19,8 @@ th {text-align: left;}
 
 <?php
 $q = intval($_GET['q']);
+$column = ($_GET['column']);
+$table = ($_GET['t']);
 
 $con =  mysqli_connect("localhost", "root", "");
 if (!$con) {
@@ -26,13 +28,18 @@ if (!$con) {
 }
 
 $db = mysqli_select_db($con, "minify_my_closet"); // Selecting Database
-$sql="SELECT * FROM outfits WHERE ".$column." = '".$q."'";
+$sql="SELECT * FROM " . $table . " WHERE ".$column." = '".$q."'";
+
 $result = mysqli_query($con,$sql);
+if (!$result) {
+	printf("Error: %s\n", mysqli_error($con));
+	exit();
+}
 
 echo "<table>
 <tr>
 <th>Name</th>
-<th>View/Edit</th>
+<th class='table-clothing-edit'>Edit</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";

@@ -20,6 +20,7 @@ th {text-align: left;}
 <?php
 $q = intval($_GET['q']);
 $column = ($_GET['column']);
+$table = ($_GET['t']);
 
 $con =  mysqli_connect("localhost", "root", "");
 if (!$con) {
@@ -27,7 +28,7 @@ if (!$con) {
 }
 
 $db = mysqli_select_db($con, "minify_my_closet"); // Selecting Database
-$sql="SELECT * FROM clothing WHERE ".$column." = '".$q."'";
+$sql="SELECT * FROM" . $table . "WHERE ".$column." = '".$q."'";
 $result = mysqli_query($con,$sql);
 
 echo "<table>

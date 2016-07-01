@@ -9,28 +9,6 @@
 		<?php include '../resources/imports/resources.php'; ?>
 		
 		<script>
-		function showCategory(str, column) {
-		    if (str == "") {
-		        document.getElementById("txtHint").innerHTML = "";
-		        return;
-		    } else { 
-		        if (window.XMLHttpRequest) {
-		            // code for IE7+, Firefox, Chrome, Opera, Safari
-		            xmlhttp = new XMLHttpRequest();
-		        } else {
-		            // code for IE6, IE5
-		            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		        }
-		        xmlhttp.onreadystatechange = function() {
-		            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
-		            }
-		        };
-		        xmlhttp.open("GET","getclothing.php?q="+str+"&column="+column,true);
-		        xmlhttp.send();
-		    }
-		}
-
 		function switchViewBy(filter) {
 			$('.filter').hide();
 
@@ -62,7 +40,7 @@
 			<div class="row">
 				<form>
 					<div class="col-sm-12 category filter">
-						<select class="form-control" name="category" onchange="showCategory(this.value, 'category')">
+						<select class="form-control" name="category" onchange="showCategory(this.value, 'category', 'clothing')">
 							<option value="">Select a category:</option>
 							<option value="1">Shirt</option>
 							<option value="2">Skirt</option>
@@ -75,7 +53,7 @@
 						</select>
 					</div>
 					<div class="col-sm-12 season filter">
-						<select class="form-control" id="season" name="season" onchange="showCategory(this.value, 'season')">
+						<select class="form-control" id="season" name="season" onchange="showCategory(this.value, 'season', 'clothing')">
 							<option value="">Select a season:</option>
 							<option value="1">Summer</option>
 							<option value="2">Spring</option>
@@ -85,7 +63,7 @@
 						</select>
 					</div>
 					<div class="col-sm-12 state filter">
-						<select class="form-control" id="state" name="state" onchange="showCategory(this.value, 'state')">
+						<select class="form-control" id="state" name="state" onchange="showCategory(this.value, 'state', 'clothing')">
 							<option value="">Select a condition:</option>
 							<option value="1">New</option>
 							<option value="2">Like New</option>
