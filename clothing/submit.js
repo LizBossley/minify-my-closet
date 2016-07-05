@@ -5,7 +5,7 @@ $(document).ready(function() {
 function submitForm() {
     var name = $("#name").val();
     var category = $("#category").val();
-    var price = $("#price").val();
+    var price = Math.round($("#price").val());
     var type = $('#type').val();
     var season = $("#season").val();
     var state = $("#state").val();
@@ -42,6 +42,9 @@ function validateForm() {
                 },
                 category: {
                     required: true,
+                },
+                price: {
+                    number: true,
                 }
             },
             messages: {
@@ -50,6 +53,9 @@ function validateForm() {
                 },
                 category: {
                     required: "Please select a category.",
+                },
+                price: {
+                    number: "Please enter a number.",
                 }
             },
             submitHandler: function(form) {

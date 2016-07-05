@@ -44,7 +44,7 @@ echo "<table>
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
     echo "<td><a href='/edit?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
-    echo "<td class='table-clothing-edit'><a href='edit.php?id=" . $row['id'] . "'>Edit</a>"; 
+    echo "<td class='table-clothing-edit'><a href='edit.php?id=" . $row['id'] . "&view=1'>Edit</a>"; 
     echo "</tr>";
 }
 echo "</table>";

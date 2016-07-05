@@ -19,6 +19,8 @@ if (isset($_GET['id'])) {
 }
 if (isset($_GET['view'])) {
 	echo "The view is set!";
+
+
 }
 ?> 
 
@@ -81,7 +83,7 @@ if (isset($_GET['view'])) {
 									</div>
 									<div class="row">
 										<div class="col-sm-4">
-											<label>Price :</label>
+											<label>Price (rounded) :</label>
 											<input class="form-control" id="price" name="price" type="text">
 										</div>
 										<div class="col-sm-4">
