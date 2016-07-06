@@ -17,14 +17,23 @@
 if (isset($_GET['id'])) {
 	echo "The id is set!";
 }
-if (isset($_GET['view'])) {
+ {
 	echo "The view is set!";
-
 
 }
 ?> 
+<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1): ?>
+	<script>
+		var table = "clothing";
+		var id = <?php echo $_GET['id'] ?>	
+		showClothing(table, id);
+	</script>
+<?php endif; ?>
 
-
+		<div id="txtHint"><b>Clothing will be displayed here once category selected</b></div>
+<script>
+		var clothing = JSON.parse(clothingItem);
+	</script>
 
 
 		<div class="container">
