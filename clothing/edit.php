@@ -22,22 +22,63 @@ if (isset($_GET['id'])) {
 
 }
 ?> 
-<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1): ?>
-	<script>
-		var table = "clothing";
-		var id = <?php echo $_GET['id'] ?>	
-		showClothing(table, id);
-	</script>
-<?php endif; ?>
+<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1) {
+	$id = ($_GET['id']);
 
-		<div id="txtHint"><b>Clothing will be displayed here once category selected</b></div>
-<script>
-		var clothing = JSON.parse(clothingItem);
-	</script>
+	$con =  mysqli_connect("localhost", "root", "");
+	if (!$con) {
+	    die('Could not connect: ' . mysqli_error($con));
+	}
+
+	$db = mysqli_select_db($con, "minify_my_closet"); // Selecting Database
+	$sql="SELECT * FROM clothing WHERE ID = '". $id ."'";
+
+	$result = mysqli_query($con,$sql);
+	if (!$result) {
+		printf("Error: %s\n", mysqli_error($con));
+		exit();
+	}
 
 
-		<div class="container">
-			<div class="row">
+	while($row = mysqli_fetch_array($result)) {
+	$clothing = array(
+	    'name' => $row['name'],
+	    'category' => $row['category'],
+	    'season' => $row['season'],
+	    'store' => $row['store'],
+	    'price' => $row['price'],
+	    'type' => $row['type'],
+	    'id' => $row['id'],
+	    );
+	}
+	mysqli_close($con);
+} ?>
+
+
+
+<div class="container">
+	<div class="row">
+		<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1): ?> <!-- view begin -->
+		<div class="row">
+			<div><h2><?php echo $clothing['name'] ?></h2></div>
+		</div>
+		<div class="row">
+			<div><?php echo $clothing['category'] ?></div>
+			<div><?php echo $clothing['season'] ?></div>
+			<div><?php echo $clothing['type'] ?></div>
+		</div>
+		<div class="row">
+			<div><?php echo $clothing['store'] ?></div>
+			<div><?php echo $clothing['price'] ?></div>
+		</div>
+		
+		<?php endif; ?> <!-- view begin -->
+
+
+
+<?php if (!isset($_GET['view']) || (isset($_GET['view']) && $_GET['view'] != 1)): ?> <!-- form begin -->
+		
+			
 				<p> Welcome to this clothing-edit page </p>
 				<form id="clothing-edit" onsubmit="validateForm()" role="form">
 					<div class="panel-group">
@@ -127,6 +168,9 @@ if (isset($_GET['id'])) {
 						</div>
 					<input class="btn btn-primary" id="submit" type="submit">
 				</form>
+			
+	<?php endif; ?> <!-- form end-->
+
 			</div>
 		</div>
 	</body>

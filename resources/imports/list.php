@@ -43,8 +43,8 @@ echo "<table>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td><a href='/edit?id=" . $row['id'] . "'>" . $row['name'] . "</a></td>";
-    echo "<td class='table-clothing-edit'><a href='edit.php?id=" . $row['id'] . "&view=1'>Edit</a>"; 
+    echo "<td><a href='edit.php?id=" . $row['id'] . "&view=1'>" . $row['name'] . "</a></td>";
+    echo "<td class='table-clothing-edit'><a href='edit.php?id=" . $row['id'] . "'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>"; 
     echo "</tr>";
 }
 echo "</table>";
