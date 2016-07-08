@@ -14,6 +14,10 @@
 		<?php include '../resources/imports/header.php'; ?>
 
 <?php 
+$categoryArray = array("None", "Shirt", "Skirt", "Dress", "Sweater", "Pants", "Shorts", "Outerwear", "Other/Multi");
+$seasonArray = array("None", "Summer", "Spring", "Winter", "Fall", "Year-round");
+$typeArray = array("None", "Casual", "Athletic", "Dressy");
+
 if (isset($_GET['id'])) {
 	echo "The id is set!";
 }
@@ -23,12 +27,13 @@ if (isset($_GET['id'])) {
 }
 ?> 
 <?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1) {
-	$id = ($_GET['id']);
-
+	
 	$con =  mysqli_connect("localhost", "root", "");
 	if (!$con) {
 	    die('Could not connect: ' . mysqli_error($con));
 	}
+
+	$id = mysqli_real_escape_string($con,($_GET['id']));
 
 	$db = mysqli_select_db($con, "minify_my_closet"); // Selecting Database
 	$sql="SELECT * FROM clothing WHERE ID = '". $id ."'";
@@ -63,13 +68,13 @@ if (isset($_GET['id'])) {
 			<div><h2><?php echo $clothing['name'] ?></h2></div>
 		</div>
 		<div class="row">
-			<div><?php echo $clothing['category'] ?></div>
-			<div><?php echo $clothing['season'] ?></div>
-			<div><?php echo $clothing['type'] ?></div>
+			<div><?php echo $categoryArray[$clothing['category']]?></div>
+			<div><?php echo $seasonArray[$clothing['season']] ?></div>
+			<div><?php echo $typeArray[$clothing['type']] ?></div>
 		</div>
 		<div class="row">
-			<div><?php echo $clothing['store'] ?></div>
-			<div><?php echo $clothing['price'] ?></div>
+			<div><span class='glyphicon glyphicon-tags' aria-hidden='true'></span> <?php echo $clothing['store'] ?></div>
+			<div><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> <?php echo $clothing['price'] ?></div>
 		</div>
 		
 		<?php endif; ?> <!-- view begin -->
