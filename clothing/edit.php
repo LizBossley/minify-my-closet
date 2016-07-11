@@ -17,16 +17,10 @@
 $categoryArray = array("None", "Shirt", "Skirt", "Dress", "Sweater", "Pants", "Shorts", "Outerwear", "Other/Multi");
 $seasonArray = array("None", "Summer", "Spring", "Winter", "Fall", "Year-round");
 $typeArray = array("None", "Casual", "Athletic", "Dressy");
+$stateArray = array("None", "New", "Like New", "Broken in", "Loved", "Replace Soon");
+$colorArray = array("None", "Red", "Blue", "Green", "Purple", "Yellow", "Orange", "Grey", "Black", "White");
 
 if (isset($_GET['id'])) {
-	echo "The id is set!";
-}
- {
-	echo "The view is set!";
-
-}
-?> 
-<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1) {
 	
 	$con =  mysqli_connect("localhost", "root", "");
 	if (!$con) {
@@ -56,10 +50,23 @@ if (isset($_GET['id'])) {
 	    'id' => $row['id'],
 	    );
 	}
+
+	$sql = "SELECT * FROM clothing_color WHERE clothing_id = '". $id ."'";
+	$result = mysqli_query($con,$sql);
+	if (!$result) {
+		printf("Error: %s\n", mysqli_error($con));
+		exit();
+	}
+
+	$colors = array();
+
+	while($row = mysqli_fetch_array($result)) {
+	array_push($colors, $row['color_id']);
+	}
+
 	mysqli_close($con);
-} ?>
-
-
+} 
+?>
 
 <div class="container">
 	<div class="row">
@@ -68,13 +75,42 @@ if (isset($_GET['id'])) {
 			<div><h2><?php echo $clothing['name'] ?></h2></div>
 		</div>
 		<div class="row">
-			<div><?php echo $categoryArray[$clothing['category']]?></div>
-			<div><?php echo $seasonArray[$clothing['season']] ?></div>
-			<div><?php echo $typeArray[$clothing['type']] ?></div>
+			<div>
+				<h4>Category: </h4><?php echo $categoryArray[$clothing['category']]?>
+			</div>
+			<div>
+				<h4>Season: </h4><?php echo $seasonArray[$clothing['season']] ?>
+			</div>
+			<div>
+				<h4>Occasion: </h4><?php echo $typeArray[$clothing['type']] ?>
+			</div>
 		</div>
 		<div class="row">
-			<div><span class='glyphicon glyphicon-tags' aria-hidden='true'></span> <?php echo $clothing['store'] ?></div>
-			<div><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> <?php echo $clothing['price'] ?></div>
+			<div>
+				<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span> 
+				<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
+			</div>
+			<div>
+				<h4>Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
+				<?php echo (!($clothing['price'] == "") ?  $clothing['price'] : " --") ?>
+			</div>
+			<div>
+				<h4>Color(s): </h4>
+					<?php 
+
+					$arrlength = count($colors);
+
+					if($arrlength == 0) {
+						echo "None";
+					}
+
+					for($x = 0; $x < $arrlength; $x++) {
+					    echo $colorArray[$colors[$x]];
+					    echo "<br>";
+					}
+
+					?>
+			</div>
 		</div>
 		
 		<?php endif; ?> <!-- view begin -->
@@ -103,36 +139,56 @@ if (isset($_GET['id'])) {
 											<label for="category">Category :</label>
 											<select class="form-control" id="category" name="category">
 												<option value="">Select a category:</option>
-												<option value="1">Shirt</option>
+												<?php 
+												for($i = 1; $i < count($categoryArray); $i++) {
+													echo "<option value='" . $i . "'>" . $categoryArray[$i] . "</option>";
+												}
+												?>
+
+												<!-- <option value="1">Shirt</option>
 												<option value="2">Skirt</option>
 												<option value="3">Dress</option>
 												<option value="4">Sweater</option>
 												<option value="5">Pants</option>
 												<option value="6">Shorts</option>
 												<option value="7">Outerwear</option>
-												<option value="8">Other/Multi</option>
+												<option value="8">Other/Multi</option> -->
+
 											</select>
 										</div>
 										<div class="col-sm-4">
 											<label for="season">Season :</label>
 											<select class="form-control" id="season" name="season">
 												<option value="">Select a season:</option>
-												<option value="1">Summer</option>
+												<?php 
+												for($i = 1; $i < count($seasonArray); $i++) {
+													echo "<option value='" . $i . "'>" . $seasonArray[$i] . "</option>";
+												}
+												?>
+
+
+											<!-- 	<option value="1">Summer</option>
 												<option value="2">Spring</option>
 												<option value="3">Winter</option>
 												<option value="4">Fall</option>
-												<option value="5">Year-round</option>
+												<option value="5">Year-round</option> -->
 											</select>
 										</div>
 										<div class="col-sm-4">
 											<label for="season">Condition :</label>
 											<select class="form-control" id="state" name="state">
 												<option value="">Select a condition:</option>
-												<option value="1">New</option>
+												<?php 
+												for($i = 1; $i < count($stateArray); $i++) {
+													echo "<option value='" . $i . "'>" . $stateArray[$i] . "</option>";
+												}
+												?>
+
+											<!-- 	<option value="1">New</option>
 												<option value="2">Like New</option>
 												<option value="3">Broken in</option>
 												<option value="4">Loved</option>
-												<option value="5">Replace Soon</option>
+												<option value="5">Replace Soon</option> -->
 											</select>
 										</div>
 									</div>
@@ -149,15 +205,30 @@ if (isset($_GET['id'])) {
 											<label for="type">Use :</label>
 											<select class="form-control" id="type" name="type">
 												<option value="">Select a category:</option>
-												<option value="1">Casual</option>
+												<?php 
+												for($i = 1; $i < count($typeArray); $i++) {
+													echo "<option value='" . $i . "'>" . $typeArray[$i] . "</option>";
+												}
+												?>
+
+												<!-- <option value="1">Casual</option>
 												<option value="2">Athletic</option>
-												<option value="3">Dressy</option>
+												<option value="3">Dressy</option> -->
 											</select>
 										</div>
 									</div>
 									<div class="row">
 										<div class="color-select">
-										  <input type="checkbox" name="color-select" id="color1" value="1">
+											<?php 
+
+												for($i = 1; $i < count($colorArray); $i++) {
+													echo "<input type='checkbox' name='color-select' id='color" . $i . "' value='" . $i . "'>";
+													echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
+												}
+
+											?>
+
+										  <!-- <input type="checkbox" name="color-select" id="color1" value="1">
 										  <label class="checkbox-inline" for="color1">Red</label>
 										
 										
@@ -165,7 +236,7 @@ if (isset($_GET['id'])) {
 										  <label class="checkbox-inline" for="color1">Blue</label>
 										
 										  <input type="checkbox" name="color-select" id="color3" value="3">
-										  <label class="checkbox-inline" for="color1">Green</label>
+										  <label class="checkbox-inline" for="color1">Green</label> -->
 										</div>
 									</div>
 								</div>
