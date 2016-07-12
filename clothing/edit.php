@@ -132,7 +132,11 @@ if (isset($_GET['id'])) {
 								<div class="panel-body">
 									<div class="form-group">
 										<label for="name">Name :</label>
-										<input class="form-control" id="name" name="name" type="text">
+										<input class="form-control" id="name" name="name" type="text" 
+										<?php if (isset($id)): ?>
+											value=<?php echo $clothing['name'] ?>
+										<?php endif ?>
+										>
 									</div>
 									<div class="row">
 										<div class="col-sm-4">
@@ -144,16 +148,6 @@ if (isset($_GET['id'])) {
 													echo "<option value='" . $i . "'>" . $categoryArray[$i] . "</option>";
 												}
 												?>
-
-												<!-- <option value="1">Shirt</option>
-												<option value="2">Skirt</option>
-												<option value="3">Dress</option>
-												<option value="4">Sweater</option>
-												<option value="5">Pants</option>
-												<option value="6">Shorts</option>
-												<option value="7">Outerwear</option>
-												<option value="8">Other/Multi</option> -->
-
 											</select>
 										</div>
 										<div class="col-sm-4">
@@ -165,13 +159,6 @@ if (isset($_GET['id'])) {
 													echo "<option value='" . $i . "'>" . $seasonArray[$i] . "</option>";
 												}
 												?>
-
-
-											<!-- 	<option value="1">Summer</option>
-												<option value="2">Spring</option>
-												<option value="3">Winter</option>
-												<option value="4">Fall</option>
-												<option value="5">Year-round</option> -->
 											</select>
 										</div>
 										<div class="col-sm-4">
@@ -183,12 +170,6 @@ if (isset($_GET['id'])) {
 													echo "<option value='" . $i . "'>" . $stateArray[$i] . "</option>";
 												}
 												?>
-
-											<!-- 	<option value="1">New</option>
-												<option value="2">Like New</option>
-												<option value="3">Broken in</option>
-												<option value="4">Loved</option>
-												<option value="5">Replace Soon</option> -->
 											</select>
 										</div>
 									</div>
@@ -210,10 +191,6 @@ if (isset($_GET['id'])) {
 													echo "<option value='" . $i . "'>" . $typeArray[$i] . "</option>";
 												}
 												?>
-
-												<!-- <option value="1">Casual</option>
-												<option value="2">Athletic</option>
-												<option value="3">Dressy</option> -->
 											</select>
 										</div>
 									</div>
@@ -225,18 +202,7 @@ if (isset($_GET['id'])) {
 													echo "<input type='checkbox' name='color-select' id='color" . $i . "' value='" . $i . "'>";
 													echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
 												}
-
 											?>
-
-										  <!-- <input type="checkbox" name="color-select" id="color1" value="1">
-										  <label class="checkbox-inline" for="color1">Red</label>
-										
-										
-										  <input type="checkbox" name="color-select" id="color2" value="2">
-										  <label class="checkbox-inline" for="color1">Blue</label>
-										
-										  <input type="checkbox" name="color-select" id="color3" value="3">
-										  <label class="checkbox-inline" for="color1">Green</label> -->
 										</div>
 									</div>
 								</div>
