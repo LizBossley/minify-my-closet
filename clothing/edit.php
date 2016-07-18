@@ -48,6 +48,7 @@ if (isset($_GET['id'])) {
 	    'price' => $row['price'],
 	    'type' => $row['type'],
 	    'id' => $row['id'],
+	    'wearsCount' => $row['wearsCount'],
 	    );
 	}
 
@@ -92,7 +93,25 @@ if (isset($_GET['id'])) {
 			</div>
 			<div>
 				<h4>Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
-				<?php echo (!($clothing['price'] == "") ?  $clothing['price'] : " --") ?>
+				<?php echo (($clothing['price'] == 0) ? " --"  : $clothing['price']) ?>
+			</div>
+			<div>
+				<h4>Times worn: </h4>
+				<?php echo (!($clothing['wearsCount'] == "") ?  $clothing['wearsCount'] : " --") ?>
+			</div>
+			<div>
+				<h4>Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
+					<?php  
+						if($clothing['wearsCount'] != 0 && $clothing['price'] != 0) {
+							$averageCost = $clothing['price']/$clothing['wearsCount'];
+						} 
+						else {
+							$averageCost = (($clothing['price'] == 0) ? " --"  : $clothing['price']); 
+						}
+
+						echo $averageCost;
+					?>
+
 			</div>
 			<div>
 				<h4>Color(s): </h4>
@@ -119,8 +138,6 @@ if (isset($_GET['id'])) {
 
 <?php if (!isset($_GET['view']) || (isset($_GET['view']) && $_GET['view'] != 1)): ?> <!-- form begin -->
 		
-			
-				<p> Welcome to this clothing-edit page </p>
 				<form id="clothing-edit" onsubmit="validateForm()" role="form">
 					<div class="panel-group">
 						<div class="panel panel-primary">
@@ -195,7 +212,15 @@ if (isset($_GET['id'])) {
 										</div>
 									</div>
 									<div class="row">
-										<div class="color-select">
+										<div class="col-sm-4">
+											<label>Number of times worn :</label>
+											<input class="form-control" id="wearsCount" type="text">
+										</div>
+									</div>
+									<div class="row">
+										<div class="cold-sm-10 col-sm-offset-1 color-select">
+											<span>Color(s)</span>
+											<br>
 											<?php 
 
 												for($i = 1; $i < count($colorArray); $i++) {

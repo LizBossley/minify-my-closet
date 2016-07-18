@@ -16,13 +16,14 @@ $type=mysqli_real_escape_string($con, $_POST['type']);
 $season=mysqli_real_escape_string($con, $_POST['season']);
 $state=mysqli_real_escape_string($con, $_POST['state']);
 $store=mysqli_real_escape_string($con, $_POST['store']);
+$wearsCount=mysqli_real_escape_string($con, $_POST['wearsCount']);
 $colors=mysqli_real_escape_string($con, $_POST['colors']);
 
 if (strlen($colors) > 1) {
 	$colorsInsert = explode(",", $colors);
 }
 
-$query = "INSERT INTO clothing(name, category, price, type, season, state, store) VALUES ('$name', '$category', '$price', '$type', '$season', '$state', '$store')";
+$query = "INSERT INTO clothing(name, category, price, type, season, state, store, wearsCount) VALUES ('$name', '$category', '$price', '$type', '$season', '$state', '$store', '$wearsCount')";
 
 //Insert query
 if(!mysqli_query($con, $query)) {
