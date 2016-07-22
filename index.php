@@ -117,7 +117,14 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
-
+<div>
+  <div class="col-sm-12 col-md-6 front-page-blurb primary">
+    Fun image text and colors
+  </div>
+  <div class="col-sm-12 col-md-6 front-page-blurb secondary">
+    Fun images text and colors
+  </div>
+</div>
 		</div>
 	</body>
 </html>

@@ -71,64 +71,76 @@ if (isset($_GET['id'])) {
 
 <div class="container">
 	<div class="row">
+		<div class="col-sm-12">
 		<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1): ?> <!-- view begin -->
 		<div class="row">
-			<div><h2><?php echo $clothing['name'] ?></h2></div>
-		</div>
-		<div class="row">
-			<div>
-				<h4>Category: </h4><?php echo $categoryArray[$clothing['category']]?>
-			</div>
-			<div>
-				<h4>Season: </h4><?php echo $seasonArray[$clothing['season']] ?>
-			</div>
-			<div>
-				<h4>Occasion: </h4><?php echo $typeArray[$clothing['type']] ?>
+			<div class="col-sm-12">
+				<div><h2><?php echo $clothing['name'] ?></h2></div>
 			</div>
 		</div>
 		<div class="row">
-			<div>
-				<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span> 
-				<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
+			<div class="col-sm-12">
+				<div>
+					<h4>Category: </h4><?php echo $categoryArray[$clothing['category']]?>
+				</div>
+				<div>
+					<h4>Season: </h4><?php echo $seasonArray[$clothing['season']] ?>
+				</div>
+				<div>
+					<h4>Occasion: </h4><?php echo $typeArray[$clothing['type']] ?>
+				</div>
 			</div>
-			<div>
-				<h4>Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
-				<?php echo (($clothing['price'] == 0) ? " --"  : $clothing['price']) ?>
-			</div>
-			<div>
-				<h4>Times worn: </h4>
-				<?php echo (!($clothing['wearsCount'] == "") ?  $clothing['wearsCount'] : " --") ?>
-			</div>
-			<div>
-				<h4>Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
-					<?php  
-						if($clothing['wearsCount'] != 0 && $clothing['price'] != 0) {
-							$averageCost = $clothing['price']/$clothing['wearsCount'];
-						} 
-						else {
-							$averageCost = (($clothing['price'] == 0) ? " --"  : $clothing['price']); 
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div>
+					<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span> 
+					<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
+				</div>
+				<div>
+					<h4>Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
+					<?php echo (($clothing['price'] == 0) ? " --"  : $clothing['price']) ?>
+				</div>
+				<div>
+					<h4>Times worn: </h4>
+					<?php echo (!($clothing['wearsCount'] == "") ?  $clothing['wearsCount'] : " --") ?>
+				</div>
+				<div>
+					<h4>Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
+						<?php  
+							if($clothing['wearsCount'] != 0 && $clothing['price'] != 0) {
+								$averageCost = $clothing['price']/$clothing['wearsCount'];
+							} 
+							else {
+								$averageCost = (($clothing['price'] == 0) ? " --"  : $clothing['price']); 
+							}
+
+							echo $averageCost;
+						?>
+				
+				</div>
+				<div>
+					<h4>Color(s): </h4>
+						<?php 
+
+						$arrlength = count($colors);
+
+						if($arrlength == 0) {
+							echo "None";
 						}
 
-						echo $averageCost;
-					?>
+						for($x = 0; $x < $arrlength; $x++) {
+						    echo $colorArray[$colors[$x]];
+						    echo "<br>";
+						}
 
+						?>
+				</div>
 			</div>
-			<div>
-				<h4>Color(s): </h4>
-					<?php 
-
-					$arrlength = count($colors);
-
-					if($arrlength == 0) {
-						echo "None";
-					}
-
-					for($x = 0; $x < $arrlength; $x++) {
-					    echo $colorArray[$colors[$x]];
-					    echo "<br>";
-					}
-
-					?>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				
 			</div>
 		</div>
 		
@@ -238,6 +250,7 @@ if (isset($_GET['id'])) {
 			
 	<?php endif; ?> <!-- form end-->
 
+			</div>
 			</div>
 		</div>
 	</body>
