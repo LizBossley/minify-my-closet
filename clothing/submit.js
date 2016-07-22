@@ -64,3 +64,27 @@ function validateForm() {
             }
         });
 }
+
+function increaseWears() {
+    var id = $("#clothingId").val();
+    var currentWears = Number($("#currentWears").val());
+    var updatedWears = currentWears + 1;
+    var loc = "edit.php?id" + id + "&view=1";
+    console.log(loc);
+
+    // Returns successful data submission message when the entered information is stored in database.
+    var dataString = 'id=' + id + '&updatedWears=' + updatedWears;
+
+        // AJAX Code To Submit Form.
+        $.ajax({
+            type: "POST",
+            url: "ajaxupdatewears.php",
+            data: dataString,
+            cache: false,
+            success: function(result) {
+                window.location.href="edit.php?id=" + result + "&view=1";
+            }
+        });
+
+    return false;
+}
