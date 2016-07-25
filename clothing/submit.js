@@ -69,7 +69,7 @@ function increaseWears() {
     var id = $("#clothingId").val();
     var currentWears = Number($("#currentWears").val());
     var updatedWears = currentWears + 1;
-    var loc = "edit.php?id" + id + "&view=1";
+    var loc = "edit.php?id=" + id + "&view=1";
     console.log(loc);
 
     // Returns successful data submission message when the entered information is stored in database.
@@ -85,6 +85,5 @@ function increaseWears() {
                 window.location.href="edit.php?id=" + result + "&view=1";
             }
         });
-
     return false;
 }

@@ -14,11 +14,11 @@
 		<?php include '../resources/imports/header.php'; ?>
 
 <?php 
-$categoryArray = array("None", "Shirt", "Skirt", "Dress", "Sweater", "Pants", "Shorts", "Outerwear", "Other/Multi");
+$categoryArray = array("None", "Shirt", "Skirt", "Dress", "Sweater", "Pants", "Shorts", "Outerwear", "Other/Multi", "Accessories/Shoes");
 $seasonArray = array("None", "Summer", "Spring", "Winter", "Fall", "Year-round");
 $typeArray = array("None", "Casual", "Athletic", "Dressy");
 $stateArray = array("None", "New", "Like New", "Broken in", "Loved", "Replace Soon");
-$colorArray = array("None", "Red", "Blue", "Green", "Purple", "Yellow", "Orange", "Grey", "Black", "White");
+$colorArray = array("None", "Red", "Blue", "Green", "Purple", "Yellow", "Orange", "Grey", "Black", "White", "Pink");
 
 if (isset($_GET['id'])) {
 	
@@ -49,6 +49,7 @@ if (isset($_GET['id'])) {
 	    'type' => $row['type'],
 	    'id' => $row['id'],
 	    'wearsCount' => $row['wearsCount'],
+	    'state' => $row['state'],
 	    );
 	}
 
@@ -109,7 +110,7 @@ if (isset($_GET['id'])) {
 					<h4>Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
 						<?php  
 							if($clothing['wearsCount'] != 0 && $clothing['price'] != 0) {
-								$averageCost = $clothing['price']/$clothing['wearsCount'];
+								$averageCost = round($clothing['price']/$clothing['wearsCount'], 2);
 							} 
 							else {
 								$averageCost = (($clothing['price'] == 0) ? " --"  : $clothing['price']); 
@@ -118,6 +119,9 @@ if (isset($_GET['id'])) {
 							echo $averageCost;
 						?>
 				
+				</div>
+				<div>
+					<h4>Condition: </h4><?php echo $stateArray[$clothing['state']]?>
 				</div>
 				<div>
 					<h4>Color(s): </h4>
@@ -140,10 +144,10 @@ if (isset($_GET['id'])) {
 		</div>
 		<div class="row">
 			<div class="col-sm-12">      
-				<form id="wears-increase" onsubmit="increaseWears()" role="form"> 
+				<form id="wears-increase"  role="form"> 
 					<input type="hidden" id="clothingId" value=<?php echo $id ?>>
 					<input type="hidden" id="currentWears" value=<?php echo $clothing['wearsCount'] ?>>       
-					<input class="btn btn-default" type="submit" value="Input" >
+					<input class="btn btn-default" onclick="increaseWears()" type="button" id="submit-currentWears" value="I Wore This!" >
 				</form>
 			</div>
 		</div>
