@@ -95,7 +95,7 @@ if (isset($_GET['id'])) {
 		<div class="row">
 			<div class="col-sm-12">
 				<div>
-					<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span> 
+					<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span>  
 					<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
 				</div>
 				<div>
@@ -121,10 +121,11 @@ if (isset($_GET['id'])) {
 				
 				</div>
 				<div>
-					<h4>Condition: </h4><?php echo $stateArray[$clothing['state']]?>
+					<h4>Condition: </h4><i class="fa fa-heartbeat" aria-hidden="true"></i> <?php echo $stateArray[$clothing['state']]?>
 				</div>
 				<div>
 					<h4>Color(s): </h4>
+					<i class="fa fa-paint-brush" aria-hidden="true"></i>
 						<?php 
 
 						$arrlength = count($colors);
