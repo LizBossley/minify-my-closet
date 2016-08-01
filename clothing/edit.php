@@ -159,103 +159,141 @@ if (isset($_GET['id'])) {
 
 <?php if (!isset($_GET['view']) || (isset($_GET['view']) && $_GET['view'] != 1)): ?> <!-- form begin -->
 		
-				<form id="clothing-edit" onsubmit="validateForm()" role="form">
-					<div class="panel-group">
-						<div class="panel panel-primary">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									Clothing Information
-								</h4>
-							</div>
-								<div class="panel-body">
-									<div class="form-group">
-										<label for="name">Name :</label>
-										<input class="form-control" id="name" name="name" type="text" 
-										<?php if (isset($id)): ?>
-											value=<?php echo $clothing['name'] ?>
-										<?php endif ?>
-										>
-									</div>
-									<div class="row">
-										<div class="col-sm-4">
-											<label for="category">Category :</label>
-											<select class="form-control" id="category" name="category">
-												<option value="">Select a category:</option>
-												<?php 
-												for($i = 1; $i < count($categoryArray); $i++) {
-													echo "<option value='" . $i . "'>" . $categoryArray[$i] . "</option>";
-												}
-												?>
-											</select>
-										</div>
-										<div class="col-sm-4">
-											<label for="season">Season :</label>
-											<select class="form-control" id="season" name="season">
-												<option value="">Select a season:</option>
-												<?php 
-												for($i = 1; $i < count($seasonArray); $i++) {
-													echo "<option value='" . $i . "'>" . $seasonArray[$i] . "</option>";
-												}
-												?>
-											</select>
-										</div>
-										<div class="col-sm-4">
-											<label for="season">Condition :</label>
-											<select class="form-control" id="state" name="state">
-												<option value="">Select a condition:</option>
-												<?php 
-												for($i = 1; $i < count($stateArray); $i++) {
-													echo "<option value='" . $i . "'>" . $stateArray[$i] . "</option>";
-												}
-												?>
-											</select>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-4">
-											<label>Price (rounded) :</label>
-											<input class="form-control" id="price" name="price" type="text">
-										</div>
-										<div class="col-sm-4">
-											<label for="name">Purchased from :</label>
-											<input class="form-control" id="store" name="store" type="text">
-										</div>
-										<div class="col-sm-4">
-											<label for="type">Use :</label>
-											<select class="form-control" id="type" name="type">
-												<option value="">Select a category:</option>
-												<?php 
-												for($i = 1; $i < count($typeArray); $i++) {
-													echo "<option value='" . $i . "'>" . $typeArray[$i] . "</option>";
-												}
-												?>
-											</select>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-4">
-											<label>Number of times worn :</label>
-											<input class="form-control" id="wearsCount" type="text">
-										</div>
-									</div>
-									<div class="row">
-										<div class="cold-sm-10 col-sm-offset-1 color-select">
-											<span>Color(s)</span>
-											<br>
-											<?php 
+	<?php if (isset($_GET['id'])): ?> <!-- form begin -->	
+		<form id="clothing-edit" onsubmit="updateForm()" role="form">
+	<?php else: ?>
+		<form id="clothing-edit" onsubmit="validateForm()" role="form">
+	<?php endif; ?>
 
-												for($i = 1; $i < count($colorArray); $i++) {
-													echo "<input type='checkbox' name='color-select' id='color" . $i . "' value='" . $i . "'>";
-													echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
-												}
-											?>
-										</div>
-									</div>
+			<div class="panel-group">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							Clothing Information
+						</h4>
+					</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<label for="name">Name :</label>
+								<input class="form-control" id="name" name="name" type="text" 
+								<?php if (isset($clothing)): ?>
+									value=<?php echo $clothing['name'] ?>
+								<?php endif ?>
+								>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label for="category">Category :</label>
+									<select class="form-control" id="category" name="category">
+										<option value="">Select a category:</option>
+										<?php 
+										for($i = 1; $i < count($categoryArray); $i++) {
+											if(isset($clothing['category']) && $clothing['category'] == $i) {
+												echo "<option selected value='" . $i . "'>" . $categoryArray[$i] . "</option>";
+											} else {
+												echo "<option value='" . $i . "'>" . $categoryArray[$i] . "</option>";	
+											}
+										}
+										?>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<label for="season">Season :</label>
+									<select class="form-control" id="season" name="season">
+										<option value="">Select a season:</option>
+										<?php 
+										for($i = 1; $i < count($seasonArray); $i++) {
+											if(isset($clothing['season']) && $clothing['season'] == $i) {
+												echo "<option selected value='" . $i . "'>" . $seasonArray[$i] . "</option>";
+											} else {
+												echo "<option value='" . $i . "'>" . $seasonArray[$i] . "</option>";
+											}
+										}
+										?>
+									</select>
+								</div>
+								<div class="col-sm-4">
+									<label for="season">Condition :</label>
+									<select class="form-control" id="state" name="state">
+										<option value="">Select a condition:</option>
+										<?php 
+										for($i = 1; $i < count($stateArray); $i++) {
+											if(isset($clothing['state']) && $clothing['state'] == $i) {
+												echo "<option selected value='" . $i . "'>" . $stateArray[$i] . "</option>";
+											} else {
+												echo "<option value='" . $i . "'>" . $stateArray[$i] . "</option>";
+											}	
+										}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label>Price (rounded) :</label>
+									<input class="form-control" id="price" name="price" type="text"
+										<?php if (isset($clothing['price'])): ?>
+											value=<?php echo $clothing['price'] ?>
+										<?php endif ?>
+									>
+								</div>
+								<div class="col-sm-4">
+									<label for="name">Purchased from :</label>
+									<input class="form-control" id="store" name="store" type="text"
+										<?php if (isset($clothing['store'])): ?>
+											value=<?php echo $clothing['store'] ?>
+										<?php endif ?>
+									>
+								</div>
+								<div class="col-sm-4">
+									<label for="type">Use :</label>
+									<select class="form-control" id="type" name="type">
+										<option value="">Select a category:</option>
+										<?php 
+										for($i = 1; $i < count($typeArray); $i++) {
+											if(isset($clothing['type']) && $clothing['type'] == $i) {
+												echo "<option selected value='" . $i . "'>" . $typeArray[$i] . "</option>";
+											} else {
+												echo "<option value='" . $i . "'>" . $typeArray[$i] . "</option>";
+											}
+										}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<label>Number of times worn :</label>
+									<input class="form-control" id="wearsCount" type="text"
+										<?php if (isset($clothing['wearsCount'])): ?>
+											value=<?php echo $clothing['wearsCount'] ?>
+										<?php endif ?>
+									>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cold-sm-10 col-sm-offset-1 color-select">
+									<span>Color(s)</span>
+									<br>
+									<?php 
+
+										for($i = 1; $i < count($colorArray); $i++) {
+											echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
+
+											if(isset($colors) && in_array($i, $colors)) {
+												echo "<input checked type='checkbox' name='color-select' id='color" . $i . "' value='" . $i . "'>";
+											} else {
+												echo "<input type='checkbox' name='color-select' id='color" . $i . "' value='" . $i . "'>";
+											}
+										}
+									?>
 								</div>
 							</div>
 						</div>
-					<input class="btn btn-primary" id="submit" type="submit">
-				</form>
+					</div>
+				</div>
+			<input class="btn btn-primary" id="submit" type="submit">
+		</form>
 			
 	<?php endif; ?> <!-- form end-->
 

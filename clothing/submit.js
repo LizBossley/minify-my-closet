@@ -70,7 +70,6 @@ function increaseWears() {
     var currentWears = Number($("#currentWears").val());
     var updatedWears = currentWears + 1;
     var loc = "edit.php?id=" + id + "&view=1";
-    console.log(loc);
 
     // Returns successful data submission message when the entered information is stored in database.
     var dataString = 'id=' + id + '&updatedWears=' + updatedWears;

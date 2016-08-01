@@ -50,6 +50,7 @@
 							<option value="6">Shorts</option>
 							<option value="7">Outerwear</option>
 							<option value="8">Other</option>
+							<option value="9">Accessories/Shoes</option>
 						</select>
 					</div>
 					<div class="col-sm-12 season filter">
