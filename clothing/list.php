@@ -25,7 +25,7 @@
 		<?php include '../resources/imports/header.php'; ?>
 		<div class="container">
 			<div class="jumbotron">
-				<p> Welcome to this clothing-list page </p>
+				<p> Welcome to your closet </p>
 			</div>
 			<div class="row">
 				<div class="col-sm-3">
@@ -76,7 +76,7 @@
 				</form>
 			</div>
 			<br>
-			<div id="txtHint"><b>Clothing will be displayed here once category selected</b></div>
+			<div id="txtHint"><b>Select a category to view clothing items in your closet</b></div>
 		</div>
 	</body>
 </html>

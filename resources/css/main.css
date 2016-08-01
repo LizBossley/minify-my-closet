@@ -33,3 +33,14 @@ body {
   font-size: 24px;
   border: 1px solid #cacaca;
 }
+
+/*Home Page*/
+.front-page-blurb.primary {
+  color: #F5F5F5;
+  background-color: #EB524A;
+}
+
+.front-page-blurb.secondary {
+  color: #27D0B9;
+  background-color: #F5F5F5;
+}
