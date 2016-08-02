@@ -2,6 +2,11 @@ $(document).ready(function() {
     validateForm();
 });
 
+function updateForm() {
+    console.log("update!");
+}
+
+
 function submitForm() {
     var name = $("#name").val();
     var category = $("#category").val();
@@ -19,7 +24,7 @@ function submitForm() {
     var dataString = 'name=' + name + '&category=' + category + '&price=' + price + '&type=' 
         + type + '&season=' + season + '&state=' + state + '&store=' + store + '&wearsCount=' + wearsCount + '&colors=' + colors;
     if (name == '' || category == '') {
-        alert("Please Fill All Fields");
+
     } else {
         // AJAX Code To Submit Form.
         $.ajax({
@@ -34,6 +39,10 @@ function submitForm() {
     }
     return false;
 }
+
+$("#submit-clothing").click(function(){
+    validateForm();
+});
 
 function validateForm() {
     $("#clothing-edit").validate({
@@ -60,7 +69,7 @@ function validateForm() {
                 }
             },
             submitHandler: function(form) {
-                submitForm();
+                form.submit();
             }
         });
 }

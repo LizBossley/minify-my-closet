@@ -160,9 +160,9 @@ if (isset($_GET['id'])) {
 <?php if (!isset($_GET['view']) || (isset($_GET['view']) && $_GET['view'] != 1)): ?> <!-- form begin -->
 		
 	<?php if (isset($_GET['id'])): ?> <!-- form begin -->	
-		<form id="clothing-edit" onsubmit="updateForm()" role="form">
+		<form id="clothing-edit" onsubmit="updateForm()" role="form" novalidate>
 	<?php else: ?>
-		<form id="clothing-edit" onsubmit="validateForm()" role="form">
+		<form id="clothing-edit" onsubmit="submitForm()" role="form" novalidate>
 	<?php endif; ?>
 
 			<div class="panel-group">
@@ -292,7 +292,7 @@ if (isset($_GET['id'])) {
 						</div>
 					</div>
 				</div>
-			<input class="btn btn-primary" id="submit" type="submit">
+			<input class="btn btn-primary" id="submit-clothing" type="submit">
 		</form>
 			
 	<?php endif; ?> <!-- form end-->
