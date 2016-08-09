@@ -17,10 +17,12 @@ $season=mysqli_real_escape_string($con, $_POST['season']);
 $state=mysqli_real_escape_string($con, $_POST['state']);
 $store=mysqli_real_escape_string($con, $_POST['store']);
 $wearsCount=mysqli_real_escape_string($con, $_POST['wearsCount']);
-$colors=mysqli_real_escape_string($con, $_POST['colors']);
+$colors= $_POST['color-select'];
 
-if (strlen($colors) > 1) {
-	$colorsInsert = explode(",", $colors);
+if(!empty($colors)) {
+	for($i = 0; $i < count($colors); $i++) {
+		$colors[$i] = mysqli_real_escape_string($con, $colors[$i]);
+	}
 }
 
 $query = "INSERT INTO clothing(name, category, price, type, season, state, store, wearsCount) VALUES ('$name', '$category', '$price', '$type', '$season', '$state', '$store', '$wearsCount')";
@@ -33,26 +35,26 @@ echo("Error description: " . mysqli_error($con));
 	$submittedId = mysqli_insert_id($con);
 		
 	if(isset($submittedId)) {
-		if (isset($colorsInsert) && count($colorsInsert) > 1 ) {
+		if (!empty($colors) && count($colors) > 1 ) {
 			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ";
-			for($i = 0; $i < count($colorsInsert); $i++) {
-				$colorQuery .= "('$submittedId', '" . $colorsInsert[$i] . "'),";
+			for($i = 0; $i < count($colors); $i++) {
+				$colorQuery .= "('$submittedId', '" . $colors[$i] . "'),";
 			}
 			$colorQuery = substr($colorQuery,0,-1);
 			$colorQuery .= ";";
 			if(!mysqli_query($con, $colorQuery)) {
 				echo("Error description: " . mysqli_error($con));
 			} 
-		} elseif (strlen($colors) == 1) {
-			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ('$submittedId', '$colors')";
+		} elseif (count($colors) == 1) {
+			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ('$submittedId', '$colors[0]')";
 			if(!mysqli_query($con, $colorQuery)) {
 				echo("Error description: " . mysqli_error($con));
 			}
 		}
 	}
-
-	echo $submittedId;
 }
 
 mysqli_close($con); // Connection Closed
+header("Location: edit.php?id=" . $submittedId . "&view=1");
+exit;
 ?>

@@ -160,9 +160,9 @@ if (isset($_GET['id'])) {
 <?php if (!isset($_GET['view']) || (isset($_GET['view']) && $_GET['view'] != 1)): ?> <!-- form begin -->
 		
 	<?php if (isset($_GET['id'])): ?> <!-- form begin -->	
-		<form id="clothing-edit" onsubmit="updateForm()" role="form" novalidate>
+		<form id="clothing-edit" onsubmit="updateForm()" role="form">
 	<?php else: ?>
-		<form id="clothing-edit" onsubmit="submitForm()" role="form" novalidate>
+		<form id="clothing-edit" action="ajaxsubmit.php" method="post" role="form">
 	<?php endif; ?>
 
 			<div class="panel-group">
@@ -264,13 +264,13 @@ if (isset($_GET['id'])) {
 							<div class="row">
 								<div class="col-sm-4">
 									<label>Number of times worn :</label>
-									<input class="form-control" id="wearsCount" type="text"
+									<input class="form-control" id="wearsCount" name="wearsCount" type="text"
 										<?php if (isset($clothing['wearsCount'])): ?>
 											value=<?php echo $clothing['wearsCount'] ?>
 										<?php endif ?>
 									>
 								</div>
-							</div>
+							</div>wearsCount
 							<div class="row">
 								<div class="cold-sm-10 col-sm-offset-1 color-select">
 									<span>Color(s)</span>
@@ -281,9 +281,9 @@ if (isset($_GET['id'])) {
 											echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
 
 											if(isset($colors) && in_array($i, $colors)) {
-												echo "<input checked type='checkbox' name='color-select' id='color" . $i . "' value='" . $i . "'>";
+												echo "<input checked type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
 											} else {
-												echo "<input type='checkbox' name='color-select' id='color" . $i . "' value='" . $i . "'>";
+												echo "<input type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
 											}
 										}
 									?>
