@@ -162,7 +162,7 @@ if (isset($_GET['id'])) {
 	<?php if (isset($_GET['id'])): ?> <!-- form begin -->	
 		<form id="clothing-edit" onsubmit="updateForm()" role="form">
 	<?php else: ?>
-		<form id="clothing-edit" action="ajaxsubmit.php" method="post" role="form">
+		<form id="clothing-edit" action="clothing-submit.php" method="post" role="form">
 	<?php endif; ?>
 
 			<div class="panel-group">
@@ -270,7 +270,7 @@ if (isset($_GET['id'])) {
 										<?php endif ?>
 									>
 								</div>
-							</div>wearsCount
+							</div>
 							<div class="row">
 								<div class="cold-sm-10 col-sm-offset-1 color-select">
 									<span>Color(s)</span>

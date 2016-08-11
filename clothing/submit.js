@@ -86,7 +86,7 @@ function increaseWears() {
         // AJAX Code To Submit Form.
         $.ajax({
             type: "POST",
-            url: "ajaxupdatewears.php",
+            url: "update-wears.php",
             data: dataString,
             cache: false,
             success: function(result) {
