@@ -1,4 +1,8 @@
 <?php
+/**
+ * This file processes the clothing submit form
+ */
+
 $con = mysqli_connect("localhost", "root", ""); // Establishing Connection with Server..
 
 // Check connection
