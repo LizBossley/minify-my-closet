@@ -1,0 +1,49 @@
+$global-font-size: 100%;
+$global-width: rem-calc(1100);
+$global-lineheight: 1.5;
+$primary: #119b49; //green
+$primary-color: $primary;
+$primary-dark: #0d7336;
+$secondary: #222222; //dark grey
+$secondary-color: $secondary;
+$accent: #ffcb08; //yellow
+$accent-dark: #e6b800; //dark yellow
+$success: #3adb76;
+$warning: #ffae00;
+$alert: #ec5840;
+$light-gray: #e6e6e6;
+$light: $light-gray;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
+$white: #fefefe;
+$body-background: $white;
+$body-font-color: $black;
+$body-font-family: 'Lato', Helvetica, Roboto, Arial, sans-serif;
+$body-antialiased: true;
+$global-margin: 1rem;
+$global-padding: 1rem;
+$global-weight-normal: normal;
+$global-weight-bold: bold;
+$global-radius: 0;
+$global-text-direction: ltr;
+$global-flexbox: false;
+$print-transparent-backgrounds: true;
+$bold: 600;
+
+/*Global Styles*/
+.flexbox-container {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+
+  align-items: center;
+
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
