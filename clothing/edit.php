@@ -40,7 +40,7 @@ if (isset($_GET['id'])) {
 
 
 	while($row = mysqli_fetch_array($result)) {
-	$clothing = array(
+		$clothing = array(
 	    'name' => $row['name'],
 	    'category' => $row['category'],
 	    'season' => $row['season'],
@@ -115,10 +115,8 @@ if (isset($_GET['id'])) {
 							else {
 								$averageCost = (($clothing['price'] == 0) ? " --"  : $clothing['price']); 
 							}
-
 							echo $averageCost;
 						?>
-				
 				</div>
 				<div>
 					<h4>Condition: </h4><i class="fa fa-heartbeat" aria-hidden="true"></i> <?php echo $stateArray[$clothing['state']]?>
@@ -127,7 +125,6 @@ if (isset($_GET['id'])) {
 					<h4>Color(s): </h4>
 					<i class="fa fa-paint-brush" aria-hidden="true"></i>
 						<?php 
-
 						$arrlength = count($colors);
 
 						if($arrlength == 0) {
@@ -138,7 +135,6 @@ if (isset($_GET['id'])) {
 						    echo $colorArray[$colors[$x]];
 						    echo "<br>";
 						}
-
 						?>
 				</div>
 			</div>
@@ -276,16 +272,15 @@ if (isset($_GET['id'])) {
 									<span>Color(s)</span>
 									<br>
 									<?php 
+									for($i = 1; $i < count($colorArray); $i++) {
+										echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
 
-										for($i = 1; $i < count($colorArray); $i++) {
-											echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
-
-											if(isset($colors) && in_array($i, $colors)) {
-												echo "<input checked type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
-											} else {
-												echo "<input type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
-											}
+										if(isset($colors) && in_array($i, $colors)) {
+											echo "<input checked type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
+										} else {
+											echo "<input type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
 										}
+									}
 									?>
 								</div>
 							</div>

@@ -2,10 +2,9 @@
 $con = mysqli_connect("localhost", "root", ""); // Establishing Connection with Server..
 
 // Check connection
-if (mysqli_connect_errno())
-  {
+if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+}
 
 $db = mysqli_select_db($con, "minify_my_closet"); // Selecting Database
 //Fetching Values from URL
@@ -18,9 +17,8 @@ $query = "UPDATE clothing SET wearsCount=$updatedWears WHERE id=$id";
 if(!mysqli_query($con, $query)) {
 echo("Error description: " . mysqli_error($con));
 } else {
-	echo $id;
+		echo $id;
 }
-
 
 mysqli_close($con); // Connection Closed
 ?>
