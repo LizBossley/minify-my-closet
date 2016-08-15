@@ -72,15 +72,15 @@ if (isset($_GET['id'])) {
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12">
+		<div class="small-12 columns">
 		<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1): ?> <!-- view begin -->
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="small-12 columns">
 				<div><h2><?php echo $clothing['name'] ?></h2></div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="small-12 columns">
 				<div>
 					<h4>Category: </h4><?php echo $categoryArray[$clothing['category']]?>
 				</div>
@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="small-12 columns">
 				<div>
 					<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span>  
 					<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
@@ -140,7 +140,7 @@ if (isset($_GET['id'])) {
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12">      
+			<div class="small-12 columns">      
 				<form id="wears-increase"  role="form"> 
 					<input type="hidden" id="clothingId" value=<?php echo $id ?>>
 					<input type="hidden" id="currentWears" value=<?php echo $clothing['wearsCount'] ?>>       
@@ -178,7 +178,7 @@ if (isset($_GET['id'])) {
 								>
 							</div>
 							<div class="row">
-								<div class="col-sm-4">
+								<div class="small-4 columns">
 									<label for="category">Category :</label>
 									<select class="form-control" id="category" name="category">
 										<option value="">Select a category:</option>
@@ -193,7 +193,7 @@ if (isset($_GET['id'])) {
 										?>
 									</select>
 								</div>
-								<div class="col-sm-4">
+								<div class="small-4 columns">
 									<label for="season">Season :</label>
 									<select class="form-control" id="season" name="season">
 										<option value="">Select a season:</option>
@@ -208,7 +208,7 @@ if (isset($_GET['id'])) {
 										?>
 									</select>
 								</div>
-								<div class="col-sm-4">
+								<div class="small-4 columns">
 									<label for="season">Condition :</label>
 									<select class="form-control" id="state" name="state">
 										<option value="">Select a condition:</option>
@@ -225,7 +225,7 @@ if (isset($_GET['id'])) {
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-4">
+								<div class="small-4 columns">
 									<label>Price (rounded) :</label>
 									<input class="form-control" id="price" name="price" type="text"
 										<?php if (isset($clothing['price'])): ?>
@@ -233,7 +233,7 @@ if (isset($_GET['id'])) {
 										<?php endif ?>
 									>
 								</div>
-								<div class="col-sm-4">
+								<div class="small-4 columns">
 									<label for="name">Purchased from :</label>
 									<input class="form-control" id="store" name="store" type="text"
 										<?php if (isset($clothing['store'])): ?>
@@ -241,7 +241,7 @@ if (isset($_GET['id'])) {
 										<?php endif ?>
 									>
 								</div>
-								<div class="col-sm-4">
+								<div class="small-4 columns">
 									<label for="type">Use :</label>
 									<select class="form-control" id="type" name="type">
 										<option value="">Select a category:</option>
@@ -258,7 +258,7 @@ if (isset($_GET['id'])) {
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-sm-4">
+								<div class="small-4 columns">
 									<label>Number of times worn :</label>
 									<input class="form-control" id="wearsCount" name="wearsCount" type="text"
 										<?php if (isset($clothing['wearsCount'])): ?>
@@ -268,20 +268,20 @@ if (isset($_GET['id'])) {
 								</div>
 							</div>
 							<div class="row">
-								<div class="cold-sm-10 col-sm-offset-1 color-select">
-									<span>Color(s)</span>
-									<br>
-									<?php 
-									for($i = 1; $i < count($colorArray); $i++) {
-										echo "<label class='checkbox-inline' for='color" . $i ."'>" . $colorArray[$i] . "</label>";
-
-										if(isset($colors) && in_array($i, $colors)) {
-											echo "<input checked type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
-										} else {
-											echo "<input type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
+								<div class="small-12 columns">
+									<fieldset class="fieldset">
+										<legend>Color(s)</legend>
+										<?php 
+										for($i = 1; $i < count($colorArray); $i++) {
+											if(isset($colors) && in_array($i, $colors)) {
+												echo "<input checked type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
+											} else {
+												echo "<input type='checkbox' name='color-select[]' id='color" . $i . "' value='" . $i . "'>";
+											}
+											echo "<label for='color" . $i ."'>" . $colorArray[$i] . "</label>";
 										}
-									}
-									?>
+										?>
+									</fieldset>
 								</div>
 							</div>
 						</div>

@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+    $(document).foundation();
+});
+
 function showCategory(str, column, table) {
     if (str == "") {
         document.getElementById("txtHint").innerHTML = "";
