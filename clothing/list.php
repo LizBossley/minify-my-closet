@@ -24,22 +24,19 @@
 	<body>
 		<?php include '../resources/imports/header.php'; ?>
 		<div class="container">
-			<div class="jumbotron">
-				<p> Welcome to your closet </p>
-			</div>
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="small-3 columns">
 					<p>View by:</p>
 				</div>
-				<div class="col-sm-9">
-					<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('category');" value="category" checked="checked">Category</label>
-					<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('season');" value="season">Season</label>
-					<label class="radio-inline"><input type="radio" name="viewBy" onclick="switchViewBy('state');" value="state">Condition</label>
+				<div class="small-9 columns">
+					<label><input type="radio" name="viewBy" onclick="switchViewBy('category');" value="category" checked="checked">Category</label>
+					<label><input type="radio" name="viewBy" onclick="switchViewBy('season');" value="season">Season</label>
+					<label><input type="radio" name="viewBy" onclick="switchViewBy('state');" value="state">Condition</label>
 				</div>
 			</div>
 			<div class="row">
 				<form>
-					<div class="col-sm-12 category filter">
+					<div class="small-12 columns category filter">
 						<select class="form-control" name="category" onchange="showCategory(this.value, 'category', 'clothing')">
 							<option value="">Select a category:</option>
 							<option value="1">Shirt</option>
@@ -53,7 +50,7 @@
 							<option value="9">Accessories/Shoes</option>
 						</select>
 					</div>
-					<div class="col-sm-12 season filter">
+					<div class="small-12 columns season filter">
 						<select class="form-control" id="season" name="season" onchange="showCategory(this.value, 'season', 'clothing')">
 							<option value="">Select a season:</option>
 							<option value="1">Summer</option>
@@ -63,7 +60,7 @@
 							<option value="5">Year-round</option>
 						</select>
 					</div>
-					<div class="col-sm-12 state filter">
+					<div class="small-12 columns state filter">
 						<select class="form-control" id="state" name="state" onchange="showCategory(this.value, 'state', 'clothing')">
 							<option value="">Select a condition:</option>
 							<option value="1">New</option>
@@ -75,8 +72,11 @@
 					</div>
 				</form>
 			</div>
-			<br>
-			<div id="txtHint"><b>Select a category to view clothing items in your closet</b></div>
+			<div class="row">
+				<div class="small-7 small-centered columns">
+					<div id="txtHint"><b>Select a category to view clothing items in your closet</b></div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-table, td, th {
-    border: 1px solid black;
-    padding: 5px;
-}
-
-th {text-align: left;}
-</style>
 </head>
 <body>
 
@@ -35,19 +22,31 @@ if (!$result) {
 	printf("Error: %s\n", mysqli_error($con));
 	exit();
 }
+?>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th class='table-clothing-edit'>Edit</th>
+        </tr>
+        <?php
+        while($row = mysqli_fetch_array($result)) {
+        ?>
+        <tr>
+            <td>
+                <a href="edit.php?id=<?php echo $row['id'] ?>&view=1"> <?php echo $row['name'] ?> </a>
+            </td>
+            <td class='table-clothing-edit'>
+                <a href="edit.php?id=<?php echo $row['id'] ?>">
+                    test
+                </a>
+            </td>
+        </tr>
+    <?php
+    }
+    ?>
+    </table>
 
-echo "<table>
-<tr>
-<th>Name</th>
-<th class='table-clothing-edit'>Edit</th>
-</tr>";
-while($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
-    echo "<td><a href='edit.php?id=" . $row['id'] . "&view=1'>" . $row['name'] . "</a></td>";
-    echo "<td class='table-clothing-edit'><a href='edit.php?id=" . $row['id'] . "'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>"; 
-    echo "</tr>";
-}
-echo "</table>";
+<?php
 mysqli_close($con);
 ?>
 </body>
