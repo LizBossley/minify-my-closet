@@ -1,21 +1,24 @@
+@import 'components/clothing';
+
 $global-font-size: 100%;
 $global-width: rem-calc(1100);
 $global-lineheight: 1.5;
-$primary: #119b49; //green
+$primary: #432E41; //deep tuscan red
 $primary-color: $primary;
-$primary-dark: #0d7336;
-$secondary: #222222; //dark grey
+$primary-dark: darken($primary, 3%);
+$secondary: #27D0B9; //copper rose
 $secondary-color: $secondary;
-$accent: #ffcb08; //yellow
-$accent-dark: #e6b800; //dark yellow
+$accent: #DDC8C4; //dust storm
+$accent-dark: darken($accent, 3%); 
+$accent-secondary: #F1F9ED;
 $success: #3adb76;
 $warning: #ffae00;
 $alert: #ec5840;
-$light-gray: #e6e6e6;
+$light-gray: #F5F5F5;
 $light: $light-gray;
-$medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
-$black: #0a0a0a;
+$medium-gray: #CCCCCC;
+$dark-gray: #404040;
+$black: #13070C;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
@@ -30,14 +33,6 @@ $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
 $bold: 600;
-$gray-light: 			#F5F5F5;
-$gray-medium: 			#CCCCCC;
-$gray-dark:				#404040;
-$accent-pink:         	#EB524A;
-$accent-purple:			#432E41;
-$accent-teal:			#27D0B9;
-$primary-text-color:   	#000;
-$secondary-text-color: 	#fff;
 
 /*Global Styles*/
 .flexbox-container {

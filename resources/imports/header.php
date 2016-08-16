@@ -5,15 +5,15 @@
       <li>
         <a href="#">Clothing</a>
         <ul class="menu vertical">
-          <li><a href="../clothing/list.php">List</a></li>
-          <li><a href="../clothing/edit.php">Add</a></li>
+          <li><a href="../clothing/list.php">My Closet</a></li>
+          <li><a href="../clothing/edit.php">Add New</a></li>
         </ul>
       </li>
       <li>
         <a href="#">Outfits</a>
         <ul class="menu vertical">
-          <li><a href="../outfits/list.php">List</a></li>
-          <li><a href="../outfits/edit.php">Add</a></li>
+          <li><a href="../outfits/list.php">My Outfits</a></li>
+          <li><a href="../outfits/edit.php">Add New</a></li>
         </ul>
       </li>
       <li><a href="#">Three</a></li>

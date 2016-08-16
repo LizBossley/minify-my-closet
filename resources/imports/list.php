@@ -23,9 +23,9 @@ if (!$result) {
 	exit();
 }
 ?>
-    <table>
+    <table class="table-clothing">
         <tr>
-            <th>Name</th>
+            <th class="table-clothing-name">Name</th>
             <th class='table-clothing-edit'>Edit</th>
         </tr>
         <?php

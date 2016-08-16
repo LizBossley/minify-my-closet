@@ -5,7 +5,7 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	    <title>Card List</title>
+	    <title>My Closet</title>
 		<?php include '../resources/imports/resources.php'; ?>
 		
 		<script>
@@ -23,7 +23,6 @@
 	</head>
 	<body>
 		<?php include '../resources/imports/header.php'; ?>
-		<div class="container">
 			<div class="row">
 				<div class="small-3 columns">
 					<p>View by:</p>
@@ -77,6 +76,5 @@
 					<div id="txtHint"><b>Select a category to view clothing items in your closet</b></div>
 				</div>
 			</div>
-		</div>
 	</body>
 </html>

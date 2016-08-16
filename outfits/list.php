@@ -11,10 +11,9 @@
 	</head>
 	<body>
 		<?php include '../resources/imports/header.php'; ?>
-		<div class="container">
-			<div class="jumbotron">
+		<div class="row">
+			<div class="small-12 columns">
 				<p> Welcome to this clothing-list page </p>
-			</div>
 			<form>
 				<select name="category" onchange="showCategory(this.value, 'category', 'outfits')">
 					<option value="">Select a category:</option>
@@ -23,7 +22,6 @@
 					<option value="3">Dressy</option>
 				</select>
 			</form>
-			<br>
 			<div id="txtHint"><b>Clothing will be displayed here once category selected</b></div>
 		</div>
 	</body>
