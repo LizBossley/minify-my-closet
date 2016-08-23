@@ -156,7 +156,7 @@ if (isset($_GET['id'])) {
 <?php if (!isset($_GET['view']) || (isset($_GET['view']) && $_GET['view'] != 1)): ?> <!-- form begin -->
 		
 	<?php if (isset($_GET['id'])): ?> <!-- form begin -->	
-		<form id="clothing-edit" onsubmit="updateForm()" role="form">
+		<form id="clothing-edit" action="clothing-update.php" method="post" role="form">
 	<?php else: ?>
 		<form id="clothing-edit" action="clothing-submit.php" method="post" role="form">
 	<?php endif; ?>
@@ -170,6 +170,11 @@ if (isset($_GET['id'])) {
 					</div>
 						<div class="panel-body">
 							<div class="form-group">
+								<input class="form-control" id="id" name="id" type="hidden" 
+								<?php if (isset($id)): ?>
+									value=<?php echo $id ?>
+								<?php endif ?>
+								>
 								<label for="name">Name :</label>
 								<input class="form-control" id="name" name="name" type="text" 
 								<?php if (isset($clothing)): ?>
