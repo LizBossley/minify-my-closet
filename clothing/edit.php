@@ -77,6 +77,7 @@ if (isset($_GET['id'])) {
 		<div class="row">
 			<div class="small-12 columns">
 				<div><h2><?php echo $clothing['name'] ?></h2></div>
+				<a href="edit.php?id=<?php echo $id ?>" class="edit-button hollow button">Edit</a>
 			</div>
 		</div>
 		<div class="row">
@@ -292,7 +293,7 @@ if (isset($_GET['id'])) {
 						</div>
 					</div>
 				</div>
-			<input class="btn btn-primary" id="submit-clothing" type="submit">
+			<input class="button" id="submit-clothing" type="submit">
 		</form>
 			
 	<?php endif; ?> <!-- form end-->
