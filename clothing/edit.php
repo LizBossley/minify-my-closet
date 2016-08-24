@@ -81,63 +81,59 @@ if (isset($_GET['id'])) {
 			</div>
 		</div>
 		<div class="row">
-			<div class="small-12 columns">
-				<div>
-					<h4>Category: </h4><?php echo $categoryArray[$clothing['category']]?>
-				</div>
-				<div>
-					<h4>Season: </h4><?php echo $seasonArray[$clothing['season']] ?>
-				</div>
-				<div>
-					<h4>Occasion: </h4><?php echo $typeArray[$clothing['type']] ?>
-				</div>
+			<div class="small-6 medium-3 columns">
+				<h4>Category: </h4><?php echo $categoryArray[$clothing['category']]?>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<h4>Season: </h4><?php echo $seasonArray[$clothing['season']] ?>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<h4>Occasion: </h4><?php echo $typeArray[$clothing['type']] ?>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span>  
+				<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
 			</div>
 		</div>
 		<div class="row">
+			<div class="small-6 medium-3 columns">
+				<h4>Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
+				<?php echo (($clothing['price'] == 0) ? " --"  : $clothing['price']) ?>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<h4>Times worn: </h4>
+				<?php echo (!($clothing['wearsCount'] == "") ?  $clothing['wearsCount'] : " --") ?>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<h4>Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
+					<?php  
+						if($clothing['wearsCount'] != 0 && $clothing['price'] != 0) {
+							$averageCost = round($clothing['price']/$clothing['wearsCount'], 2);
+						} 
+						else {
+							$averageCost = (($clothing['price'] == 0) ? " --"  : $clothing['price']); 
+						}
+						echo $averageCost;
+					?>
+			</div>
+			<div class="small-6 medium-3 columns">
+				<h4>Condition: </h4><i class="fa fa-heartbeat" aria-hidden="true"></i> <?php echo $stateArray[$clothing['state']]?>
+			</div>
 			<div class="small-12 columns">
-				<div>
-					<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span>  
-					<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
-				</div>
-				<div>
-					<h4>Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
-					<?php echo (($clothing['price'] == 0) ? " --"  : $clothing['price']) ?>
-				</div>
-				<div>
-					<h4>Times worn: </h4>
-					<?php echo (!($clothing['wearsCount'] == "") ?  $clothing['wearsCount'] : " --") ?>
-				</div>
-				<div>
-					<h4>Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
-						<?php  
-							if($clothing['wearsCount'] != 0 && $clothing['price'] != 0) {
-								$averageCost = round($clothing['price']/$clothing['wearsCount'], 2);
-							} 
-							else {
-								$averageCost = (($clothing['price'] == 0) ? " --"  : $clothing['price']); 
-							}
-							echo $averageCost;
-						?>
-				</div>
-				<div>
-					<h4>Condition: </h4><i class="fa fa-heartbeat" aria-hidden="true"></i> <?php echo $stateArray[$clothing['state']]?>
-				</div>
-				<div>
-					<h4>Color(s): </h4>
-					<i class="fa fa-paint-brush" aria-hidden="true"></i>
-						<?php 
-						$arrlength = count($colors);
+				<h4>Color(s): </h4>
+				<i class="fa fa-paint-brush" aria-hidden="true"></i>
+					<?php 
+					$arrlength = count($colors);
 
-						if($arrlength == 0) {
-							echo "None";
-						}
+					if($arrlength == 0) {
+						echo "None";
+					}
 
-						for($x = 0; $x < $arrlength; $x++) {
-						    echo $colorArray[$colors[$x]];
-						    echo "<br>";
-						}
-						?>
-				</div>
+					for($x = 0; $x < $arrlength; $x++) {
+					    echo $colorArray[$colors[$x]];
+					    echo "<br>";
+					}
+					?>
 			</div>
 		</div>
 		<div class="row">
@@ -145,7 +141,7 @@ if (isset($_GET['id'])) {
 				<form id="wears-increase"  role="form"> 
 					<input type="hidden" id="clothingId" value="<?php echo $id ?>">
 					<input type="hidden" id="currentWears" value="<?php echo $clothing['wearsCount'] ?>">       
-					<input class="btn btn-default" onclick="increaseWears()" type="button" id="submit-currentWears" value="I Wore This!" >
+					<input class="button" onclick="increaseWears()" type="button" id="submit-currentWears" value="I Wore This!" >
 				</form>
 			</div>
 		</div>
@@ -184,7 +180,7 @@ if (isset($_GET['id'])) {
 								>
 							</div>
 							<div class="row">
-								<div class="small-4 columns">
+								<div class="small-12 medium-4 columns">
 									<label for="category">Category :</label>
 									<select class="form-control" id="category" name="category">
 										<option value="">Select a category:</option>
@@ -199,7 +195,7 @@ if (isset($_GET['id'])) {
 										?>
 									</select>
 								</div>
-								<div class="small-4 columns">
+								<div class="small-12 medium-4 columns">
 									<label for="season">Season :</label>
 									<select class="form-control" id="season" name="season">
 										<option value="">Select a season:</option>
@@ -214,7 +210,7 @@ if (isset($_GET['id'])) {
 										?>
 									</select>
 								</div>
-								<div class="small-4 columns">
+								<div class="small-12 medium-4 columns">
 									<label for="season">Condition :</label>
 									<select class="form-control" id="state" name="state">
 										<option value="">Select a condition:</option>
@@ -231,15 +227,7 @@ if (isset($_GET['id'])) {
 								</div>
 							</div>
 							<div class="row">
-								<div class="small-4 columns">
-									<label>Price (rounded) :</label>
-									<input class="form-control" id="price" name="price" type="text"
-										<?php if (isset($clothing['price'])): ?>
-											value="<?php echo $clothing['price'] ?>"
-										<?php endif ?>
-									>
-								</div>
-								<div class="small-4 columns">
+								<div class="small-12 medium-4 columns">
 									<label for="name">Purchased from :</label>
 									<input class="form-control" id="store" name="store" type="text"
 										<?php if (isset($clothing['store'])): ?>
@@ -247,7 +235,7 @@ if (isset($_GET['id'])) {
 										<?php endif ?>
 									>
 								</div>
-								<div class="small-4 columns">
+								<div class="small-12 medium-4 columns">
 									<label for="type">Use :</label>
 									<select class="form-control" id="type" name="type">
 										<option value="">Select a category:</option>
@@ -262,9 +250,15 @@ if (isset($_GET['id'])) {
 										?>
 									</select>
 								</div>
-							</div>
-							<div class="row">
-								<div class="small-4 columns">
+								<div class="small-6 medium-4 columns">
+									<label>Price (rounded) :</label>
+									<input class="form-control" id="price" name="price" type="text"
+										<?php if (isset($clothing['price'])): ?>
+											value="<?php echo $clothing['price'] ?>"
+										<?php endif ?>
+									>
+								</div>
+								<div class="small-6 medium-4 columns">
 									<label>Number of times worn :</label>
 									<input class="form-control" id="wearsCount" name="wearsCount" type="text"
 										<?php if (isset($clothing['wearsCount'])): ?>
@@ -273,6 +267,7 @@ if (isset($_GET['id'])) {
 									>
 								</div>
 							</div>
+
 							<div class="row">
 								<div class="small-12 columns">
 									<fieldset class="fieldset">
