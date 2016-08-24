@@ -143,8 +143,8 @@ if (isset($_GET['id'])) {
 		<div class="row">
 			<div class="small-12 columns">      
 				<form id="wears-increase"  role="form"> 
-					<input type="hidden" id="clothingId" value=<?php echo $id ?>>
-					<input type="hidden" id="currentWears" value=<?php echo $clothing['wearsCount'] ?>>       
+					<input type="hidden" id="clothingId" value="<?php echo $id ?>">
+					<input type="hidden" id="currentWears" value="<?php echo $clothing['wearsCount'] ?>">       
 					<input class="btn btn-default" onclick="increaseWears()" type="button" id="submit-currentWears" value="I Wore This!" >
 				</form>
 			</div>
@@ -173,13 +173,13 @@ if (isset($_GET['id'])) {
 							<div class="form-group">
 								<input class="form-control" id="id" name="id" type="hidden" 
 								<?php if (isset($id)): ?>
-									value=<?php echo $id ?>
+									value="<?php echo $id ?>"
 								<?php endif ?>
 								>
 								<label for="name">Name :</label>
 								<input class="form-control" id="name" name="name" type="text" 
 								<?php if (isset($clothing)): ?>
-									value=<?php echo $clothing['name'] ?>
+									value="<?php echo $clothing['name'] ?>"
 								<?php endif ?>
 								>
 							</div>
@@ -235,7 +235,7 @@ if (isset($_GET['id'])) {
 									<label>Price (rounded) :</label>
 									<input class="form-control" id="price" name="price" type="text"
 										<?php if (isset($clothing['price'])): ?>
-											value=<?php echo $clothing['price'] ?>
+											value="<?php echo $clothing['price'] ?>"
 										<?php endif ?>
 									>
 								</div>
@@ -243,7 +243,7 @@ if (isset($_GET['id'])) {
 									<label for="name">Purchased from :</label>
 									<input class="form-control" id="store" name="store" type="text"
 										<?php if (isset($clothing['store'])): ?>
-											value=<?php echo $clothing['store'] ?>
+											value="<?php echo $clothing['store'] ?>"
 										<?php endif ?>
 									>
 								</div>
@@ -268,7 +268,7 @@ if (isset($_GET['id'])) {
 									<label>Number of times worn :</label>
 									<input class="form-control" id="wearsCount" name="wearsCount" type="text"
 										<?php if (isset($clothing['wearsCount'])): ?>
-											value=<?php echo $clothing['wearsCount'] ?>
+											value="<?php echo $clothing['wearsCount'] ?>"
 										<?php endif ?>
 									>
 								</div>
