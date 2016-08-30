@@ -50,29 +50,34 @@ $query = "UPDATE clothing
 if(!mysqli_query($con, $query)) {
 echo("Error description: " . mysqli_error($con));
 } 
-// else {
-// 	//get last id, process colors array and insert
-// 	$submittedId = mysqli_insert_id($con);
-		
-// 	if(isset($submittedId)) {
-// 		if (!empty($colors) && count($colors) > 1 ) {
-// 			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ";
-// 			for($i = 0; $i < count($colors); $i++) {
-// 				$colorQuery .= "('$submittedId', '" . $colors[$i] . "'),";
-// 			}
-// 			$colorQuery = substr($colorQuery,0,-1);
-// 			$colorQuery .= ";";
-// 			if(!mysqli_query($con, $colorQuery)) {
-// 				echo("Error description: " . mysqli_error($con));
-// 			} 
-// 		} elseif (count($colors) == 1) {
-// 			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ('$submittedId', '$colors[0]')";
-// 			if(!mysqli_query($con, $colorQuery)) {
-// 				echo("Error description: " . mysqli_error($con));
-// 			}
-// 		}
-// 	}
-// }
+
+$colorDeleteQuery =  "DELETE FROM clothing_color WHERE clothing_id=$id";
+
+if(!mysqli_query($con, $colorDeleteQuery)){
+	echo("Error description: " . mysqli_error($con));
+} else {
+		//process colors array and insert		
+	if(isset($id)) {
+		if (!empty($colors) && count($colors) > 1 ) {
+			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ";
+			for($i = 0; $i < count($colors); $i++) {
+				$colorQuery .= "('$id', '" . $colors[$i] . "'),";
+			}
+			$colorQuery = substr($colorQuery,0,-1);
+			$colorQuery .= ";";
+			if(!mysqli_query($con, $colorQuery)) {
+				echo("Error description: " . mysqli_error($con));
+			} 
+		} elseif (count($colors) == 1) {
+			$colorQuery = "INSERT INTO clothing_color(clothing_id,color_id) VALUES ('$id', '$colors[0]')";
+			if(!mysqli_query($con, $colorQuery)) {
+				echo("Error description: " . mysqli_error($con));
+			}
+		}
+	}
+}
+
+
 
 mysqli_close($con); // Connection Closed
 header("Location: edit.php?id=" . $id . "&view=1");
