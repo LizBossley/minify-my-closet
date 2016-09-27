@@ -3,7 +3,10 @@
  * This file processes the clothing update form
  */
 
-$id = ($_POST['id']);
+if(isset($_POST['id'])) {
+	$id = ($_POST['id']);
+}
+
 
 if (isset($id)) {
 

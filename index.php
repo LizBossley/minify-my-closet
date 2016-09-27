@@ -36,7 +36,6 @@
           <li><a href="outfits/edit.php">Add</a></li>
         </ul>
       </li>
-      <li><a href="#">Three</a></li>
     </ul>
   </div>
   <div class="top-bar-right">
