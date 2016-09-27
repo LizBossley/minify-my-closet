@@ -44,3 +44,7 @@ body {
   color: #27D0B9;
   background-color: #F5F5F5;
 }
+
+h4.clothing-label {
+  color: red;
+}

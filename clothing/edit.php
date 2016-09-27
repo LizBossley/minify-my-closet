@@ -71,7 +71,7 @@ if (isset($_GET['id'])) {
 ?>
 
 <div class="container">
-	<div class="row">
+	<div class="row clothing-display">
 		<div class="small-12 columns">
 		<?php if (isset($_GET['view']) && isset($_GET['id']) && $_GET['view'] == 1): ?> <!-- view begin -->
 		<div class="row">
@@ -82,30 +82,30 @@ if (isset($_GET['id'])) {
 		</div>
 		<div class="row">
 			<div class="small-6 medium-3 columns">
-				<h4>Category: </h4><?php echo $categoryArray[$clothing['category']]?>
+				<h4 class="clothing-label">Category: </h4><?php echo $categoryArray[$clothing['category']]?>
 			</div>
 			<div class="small-6 medium-3 columns">
-				<h4>Season: </h4><?php echo $seasonArray[$clothing['season']] ?>
+				<h4 class="clothing-label">Season: </h4><?php echo $seasonArray[$clothing['season']] ?>
 			</div>
 			<div class="small-6 medium-3 columns">
-				<h4>Occasion: </h4><?php echo $typeArray[$clothing['type']] ?>
+				<h4 class="clothing-label">Occasion: </h4><?php echo $typeArray[$clothing['type']] ?>
 			</div>
 			<div class="small-6 medium-3 columns">
-				<h4>Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span>  
+				<h4 class="clothing-label">Store: </h4><span class='glyphicon glyphicon-tags' aria-hidden='true'></span>  
 				<?php echo (!($clothing['store'] == "") ? $clothing['store'] : " --") ?>
 			</div>
 		</div>
 		<div class="row">
 			<div class="small-6 medium-3 columns">
-				<h4>Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
+				<h4  class="clothing-label">Price: </h4><span class='glyphicon glyphicon-usd' aria-hidden='true'></span> 
 				<?php echo (($clothing['price'] == 0) ? " --"  : $clothing['price']) ?>
 			</div>
 			<div class="small-6 medium-3 columns">
-				<h4>Times worn: </h4>
+				<h4 class="clothing-label">Times worn: </h4>
 				<?php echo (!($clothing['wearsCount'] == "") ?  $clothing['wearsCount'] : " --") ?>
 			</div>
 			<div class="small-6 medium-3 columns">
-				<h4>Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
+				<h4 class="clothing-label">Average cost per wear:</h4> <span class='glyphicon glyphicon-usd' aria-hidden='true'></span>
 					<?php  
 						if($clothing['wearsCount'] != 0 && $clothing['price'] != 0) {
 							$averageCost = round($clothing['price']/$clothing['wearsCount'], 2);
@@ -117,10 +117,10 @@ if (isset($_GET['id'])) {
 					?>
 			</div>
 			<div class="small-6 medium-3 columns">
-				<h4>Condition: </h4><i class="fa fa-heartbeat" aria-hidden="true"></i> <?php echo $stateArray[$clothing['state']]?>
+				<h4 class="clothing-label">Condition: </h4><i class="fa fa-heartbeat" aria-hidden="true"></i> <?php echo $stateArray[$clothing['state']]?>
 			</div>
 			<div class="small-12 columns">
-				<h4>Color(s): </h4>
+				<h4 class="clothing-label">Color(s): </h4>
 				<i class="fa fa-paint-brush" aria-hidden="true"></i>
 					<?php 
 					$arrlength = count($colors);
