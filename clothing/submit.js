@@ -78,10 +78,11 @@ function increaseWears() {
     var id = $("#clothingId").val();
     var currentWears = Number($("#currentWears").val());
     var updatedWears = currentWears + 1;
+    var wearStatus = $("#currentStatus").val();
     var loc = "edit.php?id=" + id + "&view=1";
 
     // Returns successful data submission message when the entered information is stored in database.
-    var dataString = 'id=' + id + '&updatedWears=' + updatedWears;
+    var dataString = 'id=' + id + '&updatedWears=' + updatedWears + '&wearStatus=' + wearStatus;
 
         // AJAX Code To Submit Form.
         $.ajax({

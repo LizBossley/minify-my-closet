@@ -140,7 +140,8 @@ if (isset($_GET['id'])) {
 			<div class="small-12 columns">      
 				<form id="wears-increase"  role="form"> 
 					<input type="hidden" id="clothingId" value="<?php echo $id ?>">
-					<input type="hidden" id="currentWears" value="<?php echo $clothing['wearsCount'] ?>">       
+					<input type="hidden" id="currentWears" value="<?php echo $clothing['wearsCount'] ?>">
+					<input type="hidden" id="currentStatus" value="<?php echo $clothing['state'] ?>">       
 					<input class="button" onclick="increaseWears()" type="button" id="submit-currentWears" value="I Wore This!" >
 				</form>
 			</div>
